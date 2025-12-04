@@ -25,7 +25,7 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: uwedevs.fr
+  host: uwudevs.fr
   tls:
     enabled: true
     secretName: uwudevs-tls

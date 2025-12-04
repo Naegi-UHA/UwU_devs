@@ -7,13 +7,17 @@ metadata:
     {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
+    {{- if .Values.ingress.tls.enabled }}
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-ssl-secret: {{ .Values.ingress.tls.secretNamespace }}/{{ .Values.ingress.tls.secretName }}
+    {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   {{- if .Values.ingress.tls.enabled }}
   tls:
     - hosts:
         - {{ .Values.ingress.host }}
-      secretName: {{ .Values.ingress.tls.secretNamespace }}/{{ .Values.ingress.tls.secretName }}
+      secretName: {{ .Values.ingress.tls.secretName }}
   {{- end }}
   rules:
     - host: {{ .Values.ingress.host }}
