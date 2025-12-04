@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fullname }}
+  labels:
+    app: {{ .Values.fullname }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.fullname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fullname }}
+    spec:
+      containers:
+        - name: {{ .Values.containers.main.name }}
+          image: "{{ .Values.containers.main.repository }}:{{ .Values.containers.main.tag }}"
+          imagePullPolicy: {{ .Values.containers.main.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.containers.main.port }}
+        - name: {{ .Values.containers.game.name }}
+          image: "{{ .Values.containers.game.repository }}:{{ .Values.containers.game.tag }}"
+          imagePullPolicy: {{ .Values.containers.game.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.containers.game.port }}

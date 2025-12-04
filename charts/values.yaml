@@ -1,0 +1,34 @@
+replicaCount: 1
+
+fullname: uwudevs
+
+containers:
+  main:
+    name: main
+    repository: wikimax/uwudev
+    tag: latest
+    pullPolicy: Always
+    port: 3000
+  game:
+    name: game
+    repository: wikimax/testgame
+    tag: latest
+    pullPolicy: Always
+    port: 3001
+
+service:
+  mainPort: 80
+  mainTargetPort: 3000
+  gamePort: 80
+  gameTargetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: uwedevs.fr
+  tls:
+    enabled: true
+    secretName: uwudevs-tls
+    secretNamespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
