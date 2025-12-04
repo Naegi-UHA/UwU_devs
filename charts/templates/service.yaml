@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: {{ .Values.fullname }}-main
   labels:
-    app: {{ .Values.fullname }}
+    app: {{ .Values.fullname }}-main
 spec:
   selector:
-    app: {{ .Values.fullname }}
+    app: {{ .Values.fullname }}-main
   ports:
     - protocol: TCP
       port: {{ .Values.service.mainPort }}
@@ -19,10 +19,10 @@ kind: Service
 metadata:
   name: {{ .Values.fullname }}-game
   labels:
-    app: {{ .Values.fullname }}
+    app: {{ .Values.fullname }}-game
 spec:
   selector:
-    app: {{ .Values.fullname }}
+    app: {{ .Values.fullname }}-game
   ports:
     - protocol: TCP
       port: {{ .Values.service.gamePort }}
