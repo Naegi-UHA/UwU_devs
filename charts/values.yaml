@@ -29,5 +29,4 @@ ingress:
   tls:
     enabled: true
     secretName: uwudevs-fr-tls
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  annotations: {}
