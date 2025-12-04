@@ -87,3 +87,31 @@ button {
 
 #btn-stop { background-color: #e74c3c; color: white; }
 #btn-delete { background-color: #f39c12; color: white; }
+
+#description-box {
+    background-color: #555;
+    color: #fff;
+    
+    /* MODIFICATION ICI : On agrandit et on fixe la taille */
+    width: 320px;       /* Une largeur fixe plus confortable */
+    min-width: 300px;   /* Sécurité pour ne pas qu'il s'écrase */
+    
+    text-align: left;   /* "left" est souvent plus lisible que "center" pour des listes */
+    padding: 15px;      /* Un peu plus d'espace à l'intérieur */
+    
+    border: 2px dashed #f39c12;
+    font-size: 13px;    /* Un poil plus grand pour la lisibilité */
+}
+
+/* Le reste ne change pas */
+#description-box h3 {
+    margin: 0 0 10px 0;
+    color: #f39c12;
+    text-align: center; /* On garde le titre centré par contre */
+    text-decoration: underline;
+}
+
+#description-box p {
+    margin: 0;
+    line-height: 1.5;
+}
