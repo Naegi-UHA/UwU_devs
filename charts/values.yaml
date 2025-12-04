@@ -18,7 +18,7 @@ containers:
 
 service:
   mainPort: 80
-  mainTargetPort: 3000
+  mainTargetPort: 80
   gamePort: 80
   gameTargetPort: 80
 
