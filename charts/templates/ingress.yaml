@@ -19,13 +19,6 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.fullname }}-main
-                port:
-                  number: {{ .Values.service.mainPort }}
           - path: /game(/|$)(.*)
             pathType: Prefix
             backend:
@@ -33,4 +26,11 @@ spec:
                 name: {{ .Values.fullname }}-game
                 port:
                   number: {{ .Values.service.gamePort }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}-main
+                port:
+                  number: {{ .Values.service.mainPort }}
 {{- end }}
