@@ -48,4 +48,11 @@ spec:
                 name: {{ .Values.fullname }}-game
                 port:
                   number: {{ .Values.service.gamePort }}
+          - path: /Build(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}-game
+                port:
+                  number: {{ .Values.service.gamePort }}
 {{- end }}
