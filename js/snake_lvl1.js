@@ -13,12 +13,21 @@ let direction = { x: 0, y: 0 };
 // NOUVEAU: Variables pour la gestion de la vitesse
 let gameInterval;
 let gameSpeed = 200; // Vitesse initiale en millisecondes (200ms = 5 mouvements/seconde)
+let directionChanged = false; // nouveau drapeau
 
 // Limites pour la vitesse (le délai en ms)
 const MIN_SPEED = 50;  // Le plus rapide
 const MAX_SPEED = 500; // Le plus lent
 
 // --- Fonctions de base du jeu (inchangées) ---
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 
 function createDiv(type) {
     let div = document.createElement("div");
@@ -40,6 +49,11 @@ function drawSnake() {
 }
 
 function moveSnake() {
+    // Appliquer au plus une direction de la file par tick
+    if (inputQueue.length) {
+        direction = inputQueue.shift();
+    }
+
     const head = {
         x: snake[0].x + direction.x * snakeSize,
         y: snake[0].y + direction.y * snakeSize,
@@ -82,22 +96,31 @@ function placeFood() {
     };
 }
 
+
+const inputQueue = [];
+
 document.addEventListener("keydown", (e) => {
+    let newDir = null;
     switch (e.key) {
-        case "ArrowDown":
-            if (direction.y === 0) direction = { x: 0, y: 1 };
-            break;
-        case "ArrowUp":
-            if (direction.y === 0) direction = { x: 0, y: -1 };
-            break;
-        case "ArrowRight":
-            if (direction.x === 0) direction = { x: 1, y: 0 };
-            break;
-        case "ArrowLeft":
-            if (direction.x === 0) direction = { x: -1, y: 0 };
-            break;
+        case "ArrowDown": newDir = { x: 0, y: 1 }; break;
+        case "ArrowUp": newDir = { x: 0, y: -1 }; break;
+        case "ArrowRight": newDir = { x: 1, y: 0 }; break;
+        case "ArrowLeft": newDir = { x: -1, y: 0 }; break;
     }
+    if (!newDir) return;
+
+    // Empêcher les directions qui sont l'opposé immédiat de la dernière direction réelle
+    // On compare avec la dernière direction effective (direction) ou la dernière en queue
+    const lastDir = inputQueue.length ? inputQueue[inputQueue.length - 1] : direction;
+
+    // Refuser l'inverse direct (180°)
+    if (newDir.x === -lastDir.x && newDir.y === -lastDir.y) return;
+
+    // Optionnel : limiter la taille de la file (ex: max 2)
+    if (inputQueue.length < 2) inputQueue.push(newDir);
 });
+
+
 
 
 // --- Nouvelle gestion de la vitesse ---
