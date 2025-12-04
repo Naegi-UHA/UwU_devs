@@ -11,7 +11,7 @@ containers:
     port: 3000
   game:
     name: game
-    repository: wikimax/uwudev
+    repository: wikimax/testgame
     tag: latest
     pullPolicy: Always
     port: 3001
