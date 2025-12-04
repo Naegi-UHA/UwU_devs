@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Coming Soon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+    />
+
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at top, #1f2937, #020617);
+            color: #f9fafb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coming-card {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            padding: 2.5rem 2.75rem;
+            max-width: 480px;
+            width: 100%;
+            backdrop-filter: blur(14px);
+        }
+
+        .glow-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+            display: inline-block;
+        }
+
+        .accent-pill {
+            border-radius: 999px;
+            padding: 0.35rem 0.85rem;
+            background: rgba(15, 118, 110, 0.15);
+            color: #5eead4;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .brand {
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            color: #9ca3af;
+        }
+
+        .progress-text {
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+<div class="coming-card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="brand">UWU Devs</span>
+        <span class="accent-pill">
+        <span class="glow-dot me-2"></span>
+        Deployment in progress
+      </span>
+    </div>
+
+    <h1 class="display-5 fw-bold mb-3">Comming soon</h1>
+
+    <p class="mb-4 progress-text">
+        Le site est en cours de déploiement. Prenez un café ☕, ça arrive dans un instant.
+    </p>
+
+    <div class="d-flex align-items-center gap-3 mb-4">
+        <div class="spinner-border" role="status" aria-hidden="true"></div>
+        <div class="flex-grow-1">
+            <div class="progress" style="height: 6px;">
+                <div
+                        class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar"
+                        style="width: 65%;"
+                        aria-valuenow="65"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                ></div>
+            </div>
+            <small class="d-block mt-2 text-secondary">
+                Dernières modifications en cours d’application…
+            </small>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="footer-text mb-0">
+            Si la page reste bloquée, essayez de la <strong>recharger</strong> dans quelques instants.
+        </p>
+    </div>
+</div>
+
+<!-- Optionnel : Bootstrap JS (si tu n'en as pas besoin, tu peux retirer) -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>
