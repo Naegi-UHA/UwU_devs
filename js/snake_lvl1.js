@@ -37,12 +37,42 @@ function createDiv(type) {
 }
 
 function drawSnake() {
-    gameArea.innerHTML = "";
-    snake.forEach((segment) => {
-        let snakePart = createDiv("snake");
+    gameArea.innerHTML = ""; // On nettoie le plateau
+
+    snake.forEach((segment, index) => {
+        let snakePart = createDiv("snake-unit"); // Classe de base
+        
+        // Positionnement
         snakePart.style.left = `${segment.x}px`;
         snakePart.style.top = `${segment.y}px`;
+
+        // --- LOGIQUE D'APPARENCE ---
+        
+        // 1. C'est la TÊTE
+        if (index === 0) {
+            snakePart.classList.add("snake-head");
+            
+            // Calcul de la rotation pour que les yeux regardent dans la bonne direction
+            // On utilise la variable globale 'direction'
+            let rotation = 0;
+            if (direction.x === 1) rotation = 90;  // Droite
+            if (direction.x === -1) rotation = -90; // Gauche
+            if (direction.y === 1) rotation = 180; // Bas
+            if (direction.y === -1) rotation = 0;   // Haut
+            
+            snakePart.style.transform = `rotate(${rotation}deg)`;
+        } 
+        // 2. C'est la QUEUE
+        else if (index === snake.length - 1) {
+            snakePart.classList.add("snake-tail");
+        } 
+        // 3. C'est le CORPS
+        else {
+            snakePart.classList.add("snake-body");
+        }
     });
+
+    // Dessiner la pomme
     let foodDiv = createDiv("food");
     foodDiv.style.left = `${food.x}px`;
     foodDiv.style.top = `${food.y}px`;
