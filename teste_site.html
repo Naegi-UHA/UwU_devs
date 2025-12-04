@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel TV Retro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/test_style.css">
+</head>
+<body>
+    <div class="page-bg">
+        <div class="tv-wrapper">
+
+            <figure class="tv" aria-label="Télévision rétro affichant le contenu du site">
+
+                <!-- Image de la TV -->
+                <img
+                    src="assets/images/tv-frame.png"
+                    alt="Télévision rétro turquoise avec écran cathodique"
+                    class="tv-image"
+                />
+
+                <!-- ZONE ÉCRAN -->
+                <div class="tv-screen">
+
+                    <!-- Contenu affiché dans l'écran (scrollable + effets) -->
+                    <div class="tv-screen-inner scanlines glitch-container">
+
+                        <!-- Glitch horizontal -->
+                        <div class="glitch">
+
+                            <main>
+
+                                <header>
+                                    <h1 class="site-title pixel-text crt-glow flicker">
+                                        Pixel TV // v0.3
+                                    </h1>
+
+                                    <p class="site-subtitle pixel-text">
+                                        L'écran cathodique rétro qui contient ton site.
+                                    </p>
+                                </header>
+
+                                <section aria-labelledby="section-intro">
+                                    <h2 id="section-intro" class="pixel-text">
+                                        Introduction
+                                    </h2>
+                                    <p class="paragraph">
+                                        Bienvenue ! Ceci est une interface TV cathodique complète :
+                                        le contenu scrolle à l’intérieur de l’écran, pas autour.
+                                        Effets rétro : scanlines, glitch discret, glow CRT, police pixel.
+                                    </p>
+                                </section>
+
+                                <section aria-labelledby="section-demo">
+                                    <h2 id="section-demo" class="pixel-text">
+                                        Démonstration du scroll
+                                    </h2>
+
+                                    <p class="paragraph">
+                                        Ajoutons du texte pour voir le scroll interne en action.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                                        volutpat metus id justo feugiat, eget hendrerit eros accumsan.
+                                    </p>
+
+                                    <p class="paragraph">
+                                        Suspendisse potenti. Nullam ornare sem ut lectus consectetur,
+                                        eu ultrices elit fermentum. In vitae suscipit lectus.
+                                        Aliquam erat volutpat.
+                                    </p>
+
+                                    <p class="paragraph">
+                                        Continue d'ajouter du contenu ici pour tester
+                                        le scroll. Le cadre de la TV reste fixe.
+                                    </p>
+
+                                    <p class="paragraph">
+                                        Encore du contenu lorem ipsum pour forcer la hauteur.
+                                        Vestibulum vel enim vel nulla facilisis faucibus.
+                                        Sed ac eros vitae nisl efficitur vulputate.
+                                    </p>
+                                </section>
+
+                                <section aria-labelledby="section-next">
+                                    <h2 id="section-next" class="pixel-text">
+                                        Prochaine étape
+                                    </h2>
+                                    <p class="paragraph">
+                                        On peut maintenant ajouter : boutons rétro 3D, menus animés,
+                                        filtres CRT, bruit analogique, transitions VHS, ou même un écran
+                                        de démarrage type boot BIOS. Tu commandes.
+                                    </p>
+                                </section>
+
+                            </main>
+
+                        </div> <!-- glitch -->
+
+                    </div> <!-- tv-screen-inner -->
+
+                </div> <!-- tv-screen -->
+
+            </figure>
+        </div>
+    </div>
+</body>
+</html>

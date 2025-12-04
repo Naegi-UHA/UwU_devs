@@ -1,0 +1,166 @@
+/* =========================================
+   POLICE ARCADE NÉON (AUDIOWIDE)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* ===== RESET SIMPLE & BASE ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Fond global de la page */
+.page-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #20242b 0%, #05070b 65%, #000000 100%);
+    color: #f4f4f4;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Focus clavier visible */
+:focus-visible {
+    outline: 2px solid #ffdd55;
+    outline-offset: 4px;
+}
+
+/* ===== CONTENEUR TV ===== */
+.tv-wrapper {
+    width: min(90vw, 900px);
+}
+
+.tv {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 3 / 2;
+}
+
+.tv-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ===== ZONE ÉCRAN CALÉE PIXEL-PERFECT ===== */
+.tv-screen {
+    position: absolute;
+    top: 13%;
+    left: 18%;
+    width: 64%;
+    height: 63%;
+
+    border-radius: 16px;
+    overflow: hidden;
+    background: #020304;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85);
+}
+
+/* Contenu réel qui scrolle dans l'écran */
+.tv-screen-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    background: #04060a;
+    color: #f8f8f8;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #55ff99 #04060a;
+}
+
+/* Scrollbar Chrome/Edge */
+.tv-screen-inner::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tv-screen-inner::-webkit-scrollbar-track {
+    background: #04060a;
+}
+
+.tv-screen-inner::-webkit-scrollbar-thumb {
+    background: #55ff99;
+    border-radius: 999px;
+}
+
+/* ===== EFFET SCANLINES ===== */
+.scanlines {
+    position: relative;
+}
+
+.scanlines::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.28) 1px,
+        rgba(0, 0, 0, 0) 2px
+    );
+    background-size: 100% 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+
+/* ===== TYPO & CONTENU ===== */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* TITRE → POLICE ARCADE NÉON */
+.site-title {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ff83ea; /* néon rose/violet */
+    text-shadow:
+        0 0 3px #ff83ea,
+        0 0 6px #ff3ad1,
+        0 0 12px #ff00b7;
+}
+
+/* SOUS-TITRE → POLICE ARCADE */
+.site-subtitle {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #ffb7f7;
+    letter-spacing: 0.1em;
+}
+
+/* Paragraphes → gardés en système pour lisibilité */
+.paragraph {
+    font-size: 0.9rem;
+    color: #e5e5e5;
+}
+
+/* ===== RESPONSIVE PETITS ÉCRANS ===== */
+@media (max-width: 480px) {
+    .tv-screen-inner {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .site-title {
+        font-size: 1rem;
+    }
+}
