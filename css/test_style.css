@@ -56,16 +56,21 @@ body {
 /* ===== ZONE ÉCRAN CALÉE PIXEL-PERFECT ===== */
 .tv-screen {
     position: absolute;
-    top: 13%;
-    left: 18%;
-    width: 64%;
-    height: 63%;
 
-    border-radius: 16px;
+    /* Ajuste au besoin, mais ça colle mieux à la vitre bombée */
+    top: 12.4%;
+    left: 19.37%;
+    width: 58%;
+    height: 60%;
+
+    border-radius: 28px;            /* bords plus arrondis */
     overflow: hidden;
     background: #020304;
-    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85);
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.9);
 }
+
+
 
 /* Contenu réel qui scrolle dans l'écran */
 .tv-screen-inner {
@@ -73,30 +78,42 @@ body {
     width: 100%;
     height: 100%;
     padding: 1rem 1.2rem;
-    border-radius: 12px;
+    border-radius: 24px;                 /* plus arrondi pour suivre la vitre */
     background: #04060a;
     color: #f8f8f8;
     font-size: 0.95rem;
     line-height: 1.4;
-    overflow-y: auto;
 
+    overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #55ff99 #04060a;
+
+    /* légère déformation pour simuler la courbure */
+    transform: scaleX(0.985) scaleY(1.015);
+    transform-origin: center;
 }
 
-/* Scrollbar Chrome/Edge */
+
+/* Scrollbar Chrome/Edge - style néon rétro */
 .tv-screen-inner::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .tv-screen-inner::-webkit-scrollbar-track {
-    background: #04060a;
+    background: #0d0f14; /* sombre */
+    border-radius: 10px;
 }
 
 .tv-screen-inner::-webkit-scrollbar-thumb {
-    background: #55ff99;
-    border-radius: 999px;
+    background: linear-gradient(180deg, #38ffb5, #1ea97a);
+    border-radius: 10px;
+    box-shadow: 0 0 6px #38ffb5;
 }
+
+.tv-screen-inner::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #52ffd1, #26c48f);
+}
+
 
 /* ===== EFFET SCANLINES ===== */
 .scanlines {
@@ -117,6 +134,7 @@ body {
     mix-blend-mode: multiply;
     opacity: 0.7;
 }
+
 
 /* ===== TYPO & CONTENU ===== */
 main {
