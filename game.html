@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UwUDevs Retro Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+<!-- About Page -->
+<div id="menu">
+    <h1 class="neon-text">UwUDevs Retro Game</h1>
+    <div id="about">
+        <p>Welcome to the NIRD project...</p>
+        <p>A digital world that is inclusive, responsible and sustainable...</p>
+        <p>Resisting Big Tech is possible!</p>
+        <p>Reuse, free software, digital autonomy...</p>
+        <p>Join the Resistant Village ✨👾</p>
+    </div>
+    <button id="start-btn">▶ START</button>
+</div>
+
+<!-- Game Area -->
+<div id="game" class="hidden">
+    <div id="score">Score: 0</div>
+    <div id="lives">
+        <div class="life-icon"></div>
+        <div class="life-icon"></div>
+        <div class="life-icon"></div>
+    </div>
+    <div id="game-area"></div>
+</div>
+
+<!-- Game Over Screen -->
+<div id="game-over" class="hidden">
+    <h1 class="neon-text">GAME OVER</h1>
+    <p id="final-score">Your Score: 0</p>
+    <p id="best-score">Best Record: 0</p>
+    <button id="restart-btn">Restart</button>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
