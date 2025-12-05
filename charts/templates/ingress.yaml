@@ -1,0 +1,58 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.fullname }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /Build(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}-game
+                port:
+                  number: {{ .Values.service.gamePort }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}-main
+                port:
+                  number: {{ .Values.service.mainPort }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.fullname }}-game-rewrite
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /game(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}-game
+                port:
+                  number: {{ .Values.service.gamePort }}
+{{- end }}
