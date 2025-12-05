@@ -1,0 +1,1112 @@
+/* ===================== RESET LÉGER ===================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #17213a 0, #050712 45%, #02030a 100%);
+    color: #f9fafb;
+}
+
+/* ===================== HEADER & NAV ===================== */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 6vw;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo-moon {
+    position: relative;
+    width: 42px;
+    height: 42px;
+}
+
+.moon {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fef9c3, #fbbf24);
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.8);
+}
+
+.moon-face {
+    position: absolute;
+    left: 40%;
+    top: 28%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.35);
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.nav a:hover {
+    background: rgba(56, 189, 248, 0.15);
+    transform: translateY(-1px);
+}
+
+.ghost-btn {
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: transparent;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.ghost-btn:hover {
+    background: rgba(37, 99, 235, 0.15);
+    transform: translateY(-1px);
+}
+
+/* ===================== SECTIONS ===================== */
+
+section {
+    padding: 4rem 6vw;
+}
+
+.section-alt {
+    background: radial-gradient(circle at top, rgba(37, 99, 235, 0.12), transparent 55%);
+}
+
+.section-header {
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 2.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    opacity: 0.85;
+}
+
+/* ===================== HERO ===================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+    gap: 2.5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 3vw + 1.4rem, 3.1rem);
+    line-height: 1.2;
+}
+
+.hero-content .accent {
+    display: block;
+    color: #38bdf8;
+}
+
+.hero-lead {
+    margin-top: 1rem;
+    font-size: 1rem;
+    max-width: 40rem;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    margin: 1.6rem 0 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.primary-btn,
+.secondary-btn {
+    border-radius: 999px;
+    padding: 0.7rem 1.3rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #020617;
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.45);
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 40px rgba(59, 130, 246, 0.65);
+}
+
+.secondary-btn {
+    background: rgba(15, 23, 42, 0.85);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.secondary-btn:hover {
+    background: rgba(15, 23, 42, 1);
+    transform: translateY(-1px);
+}
+
+.pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.3rem;
+}
+
+.pillar-card {
+    padding: 0.85rem 0.9rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.9));
+    font-size: 0.85rem;
+}
+
+.pillar-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status-card {
+    padding: 1rem 1.2rem;
+    border-radius: 1.4rem;
+    background: linear-gradient(135deg, #1f2937, #020617);
+    border: 1px solid rgba(248, 250, 252, 0.08);
+}
+
+.status-label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.status-value {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-top: 0.2rem;
+}
+
+.status-note {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.hero-timeline {
+    padding: 1rem 1.1rem;
+    border-radius: 1.2rem;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px dashed rgba(148, 163, 184, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.86rem;
+}
+
+.timeline-point {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+}
+
+.dot-red {
+    background: #fb7185;
+}
+
+.dot-yellow {
+    background: #facc15;
+}
+
+.dot-green {
+    background: #4ade80;
+}
+
+/* ===================== CARTES & GRIDS ===================== */
+
+.card {
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 1.4rem;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.8);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.card ul {
+    padding-left: 1.1rem;
+    margin-top: 0.4rem;
+}
+
+.card li + li {
+    margin-top: 0.2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+/* ===================== CALLOUT ===================== */
+
+.callout {
+    margin-top: 2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    border-left: 4px solid #f97316;
+    background: rgba(15, 23, 42, 0.9);
+    font-size: 0.93rem;
+}
+
+.callout ul {
+    padding-left: 1.1rem;
+    margin-top: 0.3rem;
+}
+
+.callout li + li {
+    margin-top: 0.12rem;
+}
+
+/* ===================== DIAGNOSTIC ===================== */
+
+.diagnostic-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.diag-item label {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.93rem;
+}
+
+.diag-item input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 18px;
+    height: 18px;
+    accent-color: #38bdf8;
+}
+
+.diagnostic-result h3 {
+    margin-bottom: 0.3rem;
+}
+
+.diag-score-label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.diag-bar {
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+
+.diag-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #22c55e, #facc15, #f97316, #ef4444);
+    transition: width 0.25s ease-out;
+}
+
+.diag-message {
+    font-size: 0.92rem;
+    margin-bottom: 0.6rem;
+}
+
+.diag-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.8rem;
+}
+
+.legend-box {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    margin-right: 0.2rem;
+}
+
+.legend-low {
+    background: #22c55e;
+}
+
+.legend-medium {
+    background: #facc15;
+}
+
+.legend-high {
+    background: #ef4444;
+}
+
+/* ===================== PARCOURS NIRD ===================== */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.step-card {
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease,
+        background 0.2s ease;
+}
+
+.step-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.step-card.active::before {
+    opacity: 1;
+}
+
+.step-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-index {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.step-header h3 {
+    font-size: 0.98rem;
+}
+
+.step-details {
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.step-card.active .step-details {
+    max-height: 320px;
+}
+
+.step-details p {
+    margin-bottom: 0.3rem;
+}
+
+/* ===================== OUTILS LIBRES ===================== */
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.tool-card ul {
+    font-size: 0.9rem;
+}
+
+/* ===================== RESSOURCES ===================== */
+
+.resource-list li::marker {
+    color: #38bdf8;
+}
+
+.resource-list a {
+    color: #38bdf8;
+    text-decoration: underline;
+}
+
+.small {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.closing {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.closing-highlight {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: #38bdf8;
+}
+
+/* ===================== FOOTER ===================== */
+
+.site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    color: #e5e7eb;
+    border-top: 1px solid rgba(148,163,184,0.3);
+}
+
+body[data-theme="light"] .site-footer {
+    color: #1e293b;
+    border-top-color: rgba(100,100,120,0.35);
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: minmax(0, 1.2fr);
+    }
+
+    .hero-aside {
+        order: -1;
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tool-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pillars {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main-header {
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    section {
+        padding: 3.2rem 5vw;
+    }
+
+    .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tool-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pillars {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* =========================================================
+   THEME CLAIR (body[data-theme="light"])
+   ========================================================= */
+
+body[data-theme="light"] {
+    background: #f5f5fb;
+    color: #0b1020;
+}
+
+/* Header clair */
+body[data-theme="light"] .main-header {
+    background: rgba(248, 250, 252, 0.9);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+body[data-theme="light"] .nav a:hover {
+    background: rgba(59, 130, 246, 0.12);
+}
+
+body[data-theme="light"] .ghost-btn {
+    border-color: rgba(148, 163, 184, 0.9);
+}
+
+/* Sections alt bleutées */
+body[data-theme="light"] .section-alt {
+    background: #e5ecff;
+}
+
+/* Cartes & panneaux */
+body[data-theme="light"] .card,
+body[data-theme="light"] .step-card,
+body[data-theme="light"] .status-card,
+body[data-theme="light"] .hero-timeline,
+body[data-theme="light"] .callout {
+    background: #ffffff;
+    color: #0b1020;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border-color: rgba(148, 163, 184, 0.45);
+}
+
+/* Callout */
+body[data-theme="light"] .callout {
+    border-left-color: #f97316;
+}
+
+/* Timeline / status */
+body[data-theme="light"] .hero-timeline {
+    border-style: solid;
+}
+
+/* Steps */
+body[data-theme="light"] .step-card {
+    background: #ffffff;
+}
+
+body[data-theme="light"] .step-card::before {
+    background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 65%);
+}
+
+body[data-theme="light"] .step-index {
+    background: #eef2ff;
+    border-color: rgba(99, 102, 241, 0.6);
+}
+
+/* Piliers pastel */
+body[data-theme="light"] .pillar-card {
+    background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+    border-color: rgba(148, 163, 184, 0.6);
+}
+
+/* Diagnostic bar */
+body[data-theme="light"] .diag-bar {
+    background: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.6);
+}
+
+body[data-theme="light"] .diag-message,
+body[data-theme="light"] .small {
+    color: #374151;
+}
+
+/* Boutons secondaires en clair */
+body[data-theme="light"] .secondary-btn {
+    background: #e5edff;
+    color: #1f2937;
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15);
+}
+
+body[data-theme="light"] .secondary-btn:hover {
+    background: #dbe4ff;
+}
+
+/* Footer */
+body[data-theme="light"] .main-footer {
+    background: transparent;
+    color: #4b5563;
+}
+
+/* Lien ressources */
+body[data-theme="light"] .resource-list a {
+    color: #2563eb;
+}
+
+/* =========================================================
+   FIOLE DIAGNOSTIC – basée sur le code fourni
+   ========================================================= */
+
+:root {
+    --flask-outline-color: #000000;
+    --flask-outline-width: 6px;
+    --flask-glass-color: #cceeff;
+    --flask-liquid-color: #77ddaa;
+    --flask-liquid-top: #99eebb;
+    --flask-bubble-color: #1a332a;
+}
+
+.flask-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0.4rem 0 0.2rem;
+}
+
+/* On scale la fiole pour qu’elle tienne bien dans la carte */
+.flask-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.5);
+    transform-origin: center center; /* recentrée, moins de “vide” sous la fiole */
+    filter: drop-shadow(0 0 0 var(--flask-outline-width) var(--flask-outline-color));
+    cursor: default;
+}
+
+
+/* Goulot */
+.rim {
+    width: 70px;
+    height: 18px;
+    background-color: var(--flask-glass-color);
+    border-radius: 4px;
+    z-index: 3;
+    position: relative;
+    top: 2px;
+}
+
+/* Corps de la fiole (Erlenmeyer) */
+.flask-body {
+    position: relative;
+    width: 140px;
+    height: 160px;
+    background-color: var(--flask-glass-color);
+    clip-path: polygon(
+        30% 0%,
+        70% 0%,
+        75% 40%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0% 90%,
+        25% 40%
+    );
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Reflet sur le verre */
+.flask-body::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 10px;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    z-index: 4;
+}
+
+/* Liquide – la hauteur est pilotée en JS via height:% */
+.liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* toujours pleine hauteur */
+    z-index: 2;
+    /* Dégradé fixe du bas vers le haut : vert → jaune/orange → rouge */
+    background: linear-gradient(
+        to top,
+        #22c55e 0%,    /* vert */
+        #22c55e 25%,
+        #facc15 45%,   /* jaune */
+        #fb923c 65%,   /* orange */
+        #ef4444 100%   /* rouge */
+    );
+    /* On masque la partie du haut en fonction de --liquid-cut */
+    clip-path: inset(var(--liquid-cut, 100%) 0 0 0);
+    transition: clip-path 0.3s ease-out;
+}
+
+/* Bulles */
+.bubbles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.bubble {
+    position: absolute;
+    background-color: var(--flask-bubble-color);
+    border-radius: 50%;
+}
+
+/* Positions des bulles, comme dans ton exemple */
+.b1 { width: 8px; height: 8px; top: 30%; left: 25%; }
+.b2 { width: 9px; height: 9px; top: 20%; left: 50%; }
+.b3 { width: 8px; height: 8px; top: 35%; right: 25%; }
+.b4 { width: 9px; height: 9px; top: 60%; left: 35%; }
+.b5 { width: 8px; height: 8px; top: 55%; right: 40%; }
+.b6 { width: 9px; height: 9px; top: 75%; left: 15%; }
+.b7 { width: 8px; height: 8px; top: 70%; right: 15%; }
+
+/* Pulsation violente quand full */
+@keyframes flaskPulse {
+    0% {
+        box-shadow:
+            inset 0 0 4px rgba(255, 255, 255, 0.4),
+            0 0 0 rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow:
+            inset 0 0 14px rgba(255, 255, 255, 1),
+            0 0 26px rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Glow sur tout le corps de la fiole */
+.flask-container.full::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 200, 0.9), transparent 60%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* applique la pulsation au liquide */
+.flask-container.full .liquid {
+    animation: flaskPulse 0.9s ease-in-out infinite alternate;
+}
+
+/* Shake léger en continu quand full */
+@keyframes flaskWiggle {
+    0%   { transform: scale(0.5) translateX(0); }
+    25%  { transform: scale(0.5) translateX(-2px); }
+    50%  { transform: scale(0.5) translateX(2px); }
+    75%  { transform: scale(0.5) translateX(-1px); }
+    100% { transform: scale(0.5) translateX(0); }
+}
+
+.flask-container.full {
+    animation: flaskWiggle 1s ease-in-out infinite;
+}
+
+/* Shake “fort” ponctuel quand on clique (classe .shake déjà utilisée en JS) */
+@keyframes flaskShakeStrong {
+    0%   { transform: scale(0.5) translateX(0); }
+    20%  { transform: scale(0.5) translateX(-5px); }
+    40%  { transform: scale(0.5) translateX(5px); }
+    60%  { transform: scale(0.5) translateX(-3px); }
+    80%  { transform: scale(0.5) translateX(3px); }
+    100% { transform: scale(0.5) translateX(0); }
+}
+
+.flask-container.shake {
+    animation: flaskShakeStrong 0.45s ease-in-out;
+}
+
+@keyframes flaskFlash {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.flask-container.flash::before {
+    animation: flaskFlash 0.55s ease-out;
+}
+
+/* HALO COSMIQUE FULL POWER */
+.flask-container.full::before {
+    content: "";
+    position: absolute;
+    inset: -60px;                 /* beaucoup plus large */
+    border-radius: 90%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(205, 91, 91, 0.75) 30%,
+        rgba(255, 0, 0, 1) 50%,
+        transparent 90%
+    );
+    pointer-events: none;
+    animation: flaskGlowSuper 1.2s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+@keyframes flaskGlowSuper {
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.25);
+        filter: blur(25px);
+    }
+}
+
+/* Pulsation forte du liquide */
+@keyframes flaskPulseStrong {
+    0% {
+        box-shadow:
+            inset 0 0 6px rgba(255, 255, 255, 0.6),
+            0 0 6px rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        box-shadow:
+            inset 0 0 16px rgba(255, 255, 255, 1),
+            0 0 22px rgba(255, 255, 255, 1);
+    }
+}
+
+.flask-container.full .liquid {
+    animation: flaskPulseStrong 0.7s ease-in-out infinite alternate;
+}
+
+/* Shake continu quand full (mais pas encore le gros shake de clic) */
+@keyframes flaskWiggleStrong {
+    0%   { transform: scale(0.5) translateX(0) rotate(0deg); }
+    25%  { transform: scale(0.5) translateX(-3px) rotate(-3deg); }
+    50%  { transform: scale(0.5) translateX(3px) rotate(3deg); }
+    75%  { transform: scale(0.5) translateX(-2px) rotate(-2deg); }
+    100% { transform: scale(0.5) translateX(0) rotate(0deg); }
+}
+
+.flask-container.full {
+    animation: flaskShakeUltra 0.4s ease-in-out infinite;
+}
+
+.flask-container.full.gaulois {
+    animation: flaskWiggleStrong 0.8s ease-in-out infinite;
+}
+
+/* Flash + MEGA shake ponctuel quand on clique (classe .shake + .flash) */
+@keyframes flaskShakeUltra {
+    0%   { transform: scale(0.5) translateX(0) rotate(0deg); }
+    20%  { transform: scale(0.5) translateX(-8px) rotate(-8deg); }
+    40%  { transform: scale(0.5) translateX(8px) rotate(8deg); }
+    60%  { transform: scale(0.5) translateX(-5px) rotate(-4deg); }
+    80%  { transform: scale(0.5) translateX(5px) rotate(4deg); }
+    100% { transform: scale(0.5) translateX(0) rotate(0deg); }
+}
+
+.flask-container.shake {
+    animation: flaskShakeUltra 0.45s ease-in-out;
+}
+
+/* Flash blanc très fort au clic */
+@keyframes flaskFlashBig {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.flask-container.flash::before {
+    animation: flaskFlashBig 0.45s ease-out;
+}
+
+
+/* Mode irréductible Gaulois : liquide vert uni */
+.flask-container.gaulois .liquid {
+    background: #22c55e;          /* vert uniforme */
+}
+
+
+/* Halo VERT quand la fiole est full en mode Gaulois */
+.flask-container.gaulois.full::before {
+background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(106, 193, 161, 0.9) 35%,
+    rgba(18, 150, 66, 0.75) 55%,
+    transparent 80%
+);
+    z-index: -1; /* reste derrière la fiole */
+}
+
+/* ===================== ALERTES MAGIQUES GAULOISES ===================== */
+
+.flash-alert-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.flash-alert {
+    background: radial-gradient(circle, #ffffff, #e8fce8 70%);
+    border-radius: 18px;
+    padding: 1.6rem 2rem;
+    width: min(380px, 90%);
+    box-shadow:
+        0 0 40px rgba(255, 50, 50, 0.9),
+        0 0 80px rgba(211, 0, 0, 0.6);
+    text-align: center;
+    color: #000000;
+    font-weight: 600;
+    position: relative;
+}
+
+.flash-alert h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+}
+
+.flash-alert p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.flash-alert button {
+    background: linear-gradient(135deg, #b92910, #960505);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(185, 22, 16, 0.5);
+    transition: transform 0.1s ease;
+}
+
+.flash-alert button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes alertPop {
+    0% { transform: scale(0.6); opacity: 0; filter: brightness(1.4); }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes alertShakeUltra {
+    0%   { transform: translateX(0) rotate(0deg); }
+    20%  { transform: translateX(-10px) rotate(-4deg); }
+    40%  { transform: translateX(10px) rotate(4deg); }
+    60%  { transform: translateX(-6px) rotate(-3deg); }
+    80%  { transform: translateX(6px) rotate(3deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes alertFlash {
+    0%   { filter: brightness(1); }
+    50%  { filter: brightness(1.8); }
+    100% { filter: brightness(1); }
+}
+
+/* Shake ULTRA + flash en même temps sur la même box */
+.flash-alert.alert-shake {
+    animation: alertShakeUltra 0.7s ease-in-out infinite, alertFlash 0.6s ease-out infinite;
+}
+

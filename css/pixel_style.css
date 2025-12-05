@@ -1,0 +1,495 @@
+/* =========================================
+   POLICE PIXEL (PRESS START 2P)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== RESET SIMPLE & BASE ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Fond global de la page */
+.page-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #20242b 0%, #05070b 65%, #000000 100%);
+    color: #f4f4f4;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Focus clavier visible */
+:focus-visible {
+    outline: 2px solid #ffdd55;
+    outline-offset: 4px;
+}
+
+/* ===== CONTENEUR TV ===== */
+.tv-wrapper {
+    width: min(90vw, 900px);
+}
+
+.tv {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 3 / 2;
+}
+
+.tv-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    /* optionnel : décommente pour un rendu plus "pixel"
+    image-rendering: pixelated;
+    */
+}
+
+/* ===== ZONE ÉCRAN CALÉE PIXEL-PERFECT ===== */
+.tv-screen {
+    position: absolute;
+
+    /* Ajuste au besoin si tu changes d'image */
+    top: 13.58%;
+    left: 18.28%;
+    width: 50%;
+    height: 55%;
+
+    border-radius: 28px;
+    overflow: hidden;
+    background: #020304;
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.9);
+
+    /* Glow cyan au démarrage */
+    /*animation: crt-glow-anim 5s ease-out forwards;*/
+}
+
+
+.tv-screenn {
+    position: absolute;
+
+    /* Ajuste au besoin si tu changes d'image */
+    top: 4.6%;
+    left: 74.3%;
+    width: 21%;
+    height: 45%;
+
+    border-radius: 28px;
+    overflow: hidden;
+    background: #020304;
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.9);
+
+    /* Glow cyan au démarrage */
+    /*animation: crt-glow-anim 5s ease-out forwards;*/
+}
+@keyframes crt-glow-anim {
+    0% {
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 0.35),
+            0 0 60px rgba(0, 255, 255, 0.25),
+            inset 0 0 25px rgba(0, 0, 0, 0.9);
+    }
+    100% {
+        box-shadow:
+            0 0 12px rgba(0, 255, 255, 0.08),
+            0 0 20px rgba(0, 255, 255, 0.03),
+            inset 0 0 25px rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* Contenu réel qui scrolle dans l'écran */
+.tv-screen-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 24px;
+    background: #04060a;
+    color: #f8f8f8;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #55ff99 #04060a;
+
+    /* légère déformation pour simuler la courbure */
+    transform: scaleX(0.985) scaleY(1.015);
+    transform-origin: center;
+}
+
+/* Scrollbar Chrome/Edge - style CRT */
+.tv-screen-inner::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tv-screen-inner::-webkit-scrollbar-track {
+    background: #0a0c0f;
+    border-radius: 8px;
+    border: 2px solid #1e242c;
+}
+
+.tv-screen-inner::-webkit-scrollbar-thumb {
+    background: repeating-linear-gradient(
+        to bottom,
+        #00ffaa,
+        #00ffaa 4px,
+        #009970 4px,
+        #009970 8px
+    );
+    border-radius: 6px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.8);
+}
+
+.tv-screen-inner::-webkit-scrollbar-thumb:hover {
+    background: repeating-linear-gradient(
+        to bottom,
+        #44ffcc,
+        #44ffcc 4px,
+        #22bb99 4px,
+        #22bb99 8px
+    );
+}
+
+/* ===== EFFET GRAIN CRT AVEC DÉSACTIVATION APRÈS 5-10s ===== */
+.crt-boot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+
+    mix-blend-mode: soft-light;
+    opacity: 0;
+
+    /*animation: crt-noise-anim 10s ease-out forwards;*/
+}
+
+@keyframes crt-noise-anim {
+    0%   { opacity: 0.22; transform: translate(0, 0); }
+    25%  { opacity: 0.18; transform: translate(-2px, 1px); }
+    50%  { opacity: 0.20; transform: translate(1px, -1px); }
+    75%  { opacity: 0.14; transform: translate(-1px, 2px); }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+/* ===== HEADER / MENU ARCADE ===== */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Marque à gauche (badge + titre) */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.brand-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 20%, #ffffff, #00ffe5 35%, #007d73 100%);
+    box-shadow:
+        0 0 10px rgba(0, 255, 230, 0.7),
+        0 0 20px rgba(0, 255, 230, 0.3),
+        inset 0 0 8px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.55rem;
+    color: #020608;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titres de sections */
+.section-title {
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ff83ea;
+    margin: 0.4rem 0 0.5rem 0;
+}
+
+/* Nav arcade */
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* ===== BOUTONS RÉTRO 3D PLATS ===== */
+.btn-retro {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.45rem 0.9rem;
+    border-radius: 10px;
+    border: none;
+
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+
+    background: linear-gradient(180deg, #303846, #15181f);
+    color: #f5f5f5;
+
+    box-shadow:
+        0 3px 0 #05070b,
+        0 0 6px rgba(0, 0, 0, 0.8);
+        /*
+    transition:
+        transform 0.08s ease-out,
+        box-shadow 0.08s ease-out,
+        background 0.15s ease-out,
+        color 0.15s ease-out;
+        */
+}
+
+/* Variante petite pour le menu */
+.btn-retro--small {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.45rem;
+}
+
+/* Variante principale (bouton d'action) */
+.btn-retro--primary {
+    background: linear-gradient(180deg, #33ffd1, #12a78c);
+    color: #041014;
+    box-shadow:
+        0 3px 0 #046457,
+        0 0 10px rgba(51, 255, 209, 0.6);
+}
+
+/* Variante "ghost" (secondaire) */
+.btn-retro--ghost {
+    background: transparent;
+    color: #b9c7ff;
+    border: 1px solid #4b5cff;
+    box-shadow: 0 3px 0 #151632;
+}
+
+/* Hover : remonte un peu la lumière */
+.btn-retro:hover {
+    background: linear-gradient(180deg, #3b4554, #191d26);
+    box-shadow:
+        0 4px 0 #05070b,
+        0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+.btn-retro--primary:hover {
+    background: linear-gradient(180deg, #54ffe0, #18c7a3);
+}
+
+/* Active : effet bouton "enfoncé" */
+.btn-retro:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 1px 0 #05070b,
+        0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Accessibilité focus */
+.btn-retro:focus-visible {
+    outline: 2px solid #ffdd55;
+    outline-offset: 3px;
+}
+
+/* Ligne de boutons (ex: section demo) */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== EFFET SCANLINES ===== */
+.scanlines {
+    position: relative;
+}
+
+.scanlines::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.28) 1px,
+        rgba(0, 0, 0, 0) 2px
+    );
+    background-size: 100% 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+
+/* ===== TYPO & CONTENU ===== */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem; /* plus d'air entre les blocs */
+}
+
+/* TITRE → POLICE PIXEL */
+.site-title {
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ff83ea;
+    text-shadow:
+        0 0 3px #ff83ea,
+        0 0 6px #ff3ad1,
+        0 0 12px #ff00b7;
+    margin-bottom: 0.6rem;
+}
+
+/* SOUS-TITRE → POLICE PIXEL */
+.site-subtitle {
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    color: #ffb7f7;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+}
+
+/* Paragraphes → gardés en système pour lisibilité */
+.paragraph {
+    font-size: 0.85rem;
+    color: #e5e5e5;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ===== BANDEAU TEXTE AUTOUR DE LA TV ===== */
+.tv-marquee {
+    position: absolute;
+    inset: 0; /* occupe toute la TV */
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3; /* sous l’écran mais au-dessus de l’image */
+}
+
+.tv-marquee-inner {
+    position: absolute;
+    top: 1%;
+    width: 80%;
+    text-align: center;
+
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-size: 0.45rem;
+    letter-spacing: 0.08em;
+    color: #58ffe6;
+    opacity: 0.75;
+
+    text-shadow:
+        0 0 4px #00fff2,
+        0 0 8px #00d4c2;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation: marquee-move 12s linear infinite;
+}
+
+@keyframes marquee-move {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE PETITS ÉCRANS ===== */
+@media (max-width: 480px) {
+    .tv-screen-inner {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .site-title {
+        font-size: 0.8rem;
+    }
+
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.4rem;
+    }
+
+    .btn-retro--small {
+        font-size: 0.45rem;
+        padding: 0.25rem 0.55rem;
+    }
+}
+
+
+/*Pac man*/
+
+body {
+    margin: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    color: #f4f4f4;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+#score {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+canvas {
+    border: 2px solid #444;
+    background: #000;
+    image-rendering: pixelated; /* pour un rendu un peu plus “retro” */
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chasse à l'Info (Alphabet Complet)</title>
+    <link rel="stylesheet" href="css/bad-ui.css">
+</head>
+<body>
+
+    <h1>Formulaire "Alphabet Complet"</h1>
+
+    <div class="movable" id="item-0" style="bottom: 10%; left: 10%;">
+        <button id="btn-home">HOME</button>
+    </div>
+        
+    <div class="movable" id="item-1" style="top: 10%; left: 10%;">
+        <label>Nom :</label>
+        <input type="text" class="field" readonly placeholder="Doucement...">
+    </div>
+    
+    <div class="movable" id="item-2" style="top: 30%; right: 40%;">
+        <label>Prénom :</label>
+        <input type="text" class="field" readonly placeholder="Doucement...">
+    </div>
+
+    <div class="movable" id="roulette-wrapper" style="top: 50%; left: 50%; border-radius: 50%;">
+        <div id="roulette-box">?</div>
+    </div>
+
+    <div class="movable" id="wrapper-stop" style="bottom: 20%; left: 30%;">
+        <button id="btn-stop">STOP / AJOUTER</button>
+    </div>
+
+    <div class="movable" id="wrapper-delete" style="bottom: 20%; right: 30%;">
+        <button id="btn-delete">EFFACER</button>
+    </div>
+
+    <div class="movable" id="description-box" style="top: 15%; right: 10%;">
+        <h3>Règles du jeu</h3>
+        <p>
+            1. Cliquez sur un champ pour le sélectionner.<br>
+            2. Cliquez sur <strong>STOP</strong> pour ajouter une lettre.<br>
+            3. Bonne chance (vous en aurez besoin).
+        </p>
+    </div>
+
+    <div id="alert-message" style="
+        display: none; 
+        position: fixed; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        background-color: red; 
+        color: yellow; 
+        font-weight: bold; 
+        padding: 20px; 
+        border: 5px solid black; 
+        z-index: 9999; 
+        font-size: 24px;
+        text-align: center;">
+        Bien essayé mais ça serait trop facile
+    </div>
+
+    <script src="js/bad-ui.js"></script>
+</body>
+</html>

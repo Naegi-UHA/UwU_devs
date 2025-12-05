@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>UwU Retro Game</title>
+    <link rel="stylesheet" href="css/space_invaders.css">
+</head>
+<body>
+<!-- Menu -->
+<div id="menu">
+    <h1 class="neon-text">UwU Retro Game</h1>
+    <div id="about">
+        <h2 class="instructions-title">🎮 Instructions</h2>
+        <ul class="instructions-list">
+            <li>🖱️ Click to <span class="highlight">shoot</span></li>
+            <li>⚠️ Avoid letting the <span class="highlight">enemies</span> reach the bottom</li>
+            <li>⚠️ Do not touch the <span class="highlight">enemies</span> or you may lose health</li>
+            <li>✦ Bonus = <span class="highlight">rapid fire x2</span> for 10s</li>
+            <li>👾 Boss = <span class="highlight">+10 points</span></li>
+            <li>↩️ Press <span class="highlight">ENTER</span> = Restart after Game Over</li>
+        </ul>
+    </div>
+
+    <button id="start-btn">Start New Game</button>
+    <a href="index.html" class="nav-link btn-retro btn-retro--small"><button id="start-btn">HOME</button></a>
+</div>
+
+<!-- Zone de jeu -->
+<div id="game" class="hidden">
+    <div id="score">Score: 0</div>
+    <div id="lives"></div>
+    <div id="game-area"></div>
+</div>
+
+<!-- Game Over -->
+<div id="game-over" class="hidden">
+    <h1>GAME OVER</h1>
+    <p id="final-score"></p>
+    <p id="best-score"></p>
+    <button id="restart-btn">Restart</button>
+    <a href="index.html" class="nav-link btn-retro btn-retro--small"><button id="start-btn">HOME</button></a>
+</div>
+
+<!-- Banners -->
+<div id="uwu-banner" class="uwu-banner">UWU</div>
+<div id="bonus-banner" class="bonus-banner">x2</div>
+
+<script src="js/space_invaders.js"></script>
+</body>
+</html>
