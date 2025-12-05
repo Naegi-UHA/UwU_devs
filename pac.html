@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacman basique</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            color: #f4f4f4;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        h1 {
+            margin: 10px 0 5px;
+            font-size: 20px;
+        }
+
+        #score {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        canvas {
+            border: 2px solid #444;
+            background: #000;
+            image-rendering: pixelated; /* pour un rendu un peu plus “retro” */
+        }
+    </style>
+</head>
+<body>
+<h1>Pacman basique</h1>
+<div id="score">Score : 0</div>
+<canvas id="game"></canvas>
+
+<script>
+    // ====== CONFIG DE BASE ======
+    const TILE_SIZE = 24;
+
+    // # = mur, . = point, ' ' = vide
+    const RAW_MAP = [
+        "####################",
+        "#........##........#",
+        "#.####...##...####.#",
+        "#.#  #...##...#  #.#",
+        "#.####...##...####.#",
+        "#........P.........#",
+        "####################"
+    ];
+
+    // On convertit en tableau de caractères modifiable
+    const map = RAW_MAP.map(row => row.split(''));
+    const ROWS = map.length;
+    const COLS = map[0].length;
+
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    canvas.width = COLS * TILE_SIZE;
+    canvas.height = ROWS * TILE_SIZE;
+
+    const scoreDiv = document.getElementById('score');
+
+    // ====== CHERCHE LA POSITION DE DÉPART DE PACMAN (caractère 'P') ======
+    let pacman = {
+        x: 1,
+        y: 1,
+        dirX: 1,
+        dirY: 0,
+        mouthPhase: 0,
+        mouthOpening: true
+    };
+
+    let totalDots = 0;
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (map[y][x] === '.') totalDots++;
+            if (map[y][x] === 'P') {
+                pacman.x = x;
+                pacman.y = y;
+                map[y][x] = ' '; // on efface le P de la map
+            }
+        }
+    }
+
+    let score = 0;
+    let gameWon = false;
+
+    // ====== DESSIN DU LABYRINTH ======
+    function drawMap() {
+        for (let y = 0; y < ROWS; y++) {
+            for (let x = 0; x < COLS; x++) {
+                const tile = map[y][x];
+                const px = x * TILE_SIZE;
+                const py = y * TILE_SIZE;
+
+                if (tile === '#') {
+                    // Murs
+                    ctx.fillStyle = "#0033cc";
+                    ctx.fillRect(px, py, TILE_SIZE, TILE_SIZE);
+                } else {
+                    // Fond
+                    ctx.fillStyle = "#000000";
+                    ctx.fillRect(px, py, TILE_SIZE, TILE_SIZE);
+
+                    // Points
+                    if (tile === '.') {
+                        ctx.beginPath();
+                        ctx.fillStyle = "#ffcc00";
+                        ctx.arc(
+                            px + TILE_SIZE / 2,
+                            py + TILE_SIZE / 2,
+                            3,
+                            0,
+                            Math.PI * 2
+                        );
+                        ctx.fill();
+                    }
+                }
+            }
+        }
+    }
+
+    // ====== DESSIN DE PACMAN ======
+    function drawPacman() {
+        const centerX = pacman.x * TILE_SIZE + TILE_SIZE / 2;
+        const centerY = pacman.y * TILE_SIZE + TILE_SIZE / 2;
+
+        // Animation de la bouche (oscille entre 0 et 1)
+        if (pacman.mouthOpening) {
+            pacman.mouthPhase += 0.08;
+            if (pacman.mouthPhase >= 1) pacman.mouthOpening = false;
+        } else {
+            pacman.mouthPhase -= 0.08;
+            if (pacman.mouthPhase <= 0) pacman.mouthOpening = true;
+        }
+
+        const maxMouthAngle = Math.PI / 4;
+        const mouthAngle = maxMouthAngle * pacman.mouthPhase;
+
+        // Orientation en fonction de la direction
+        let directionAngle = 0;
+        if (pacman.dirX === 1 && pacman.dirY === 0) directionAngle = 0;           // droite
+        if (pacman.dirX === -1 && pacman.dirY === 0) directionAngle = Math.PI;    // gauche
+        if (pacman.dirX === 0 && pacman.dirY === -1) directionAngle = -Math.PI / 2; // haut
+        if (pacman.dirX === 0 && pacman.dirY === 1) directionAngle = Math.PI / 2;   // bas
+
+        ctx.fillStyle = "#ffff00";
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(
+            centerX,
+            centerY,
+            TILE_SIZE / 2 - 2,
+            directionAngle + mouthAngle,
+            directionAngle - mouthAngle,
+            false
+        );
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    // ====== MOUVEMENT SUR LES FLOCHES ======
+    function isWall(x, y) {
+        if (y < 0 || y >= ROWS || x < 0 || x >= COLS) return true;
+        return map[y][x] === '#';
+    }
+
+    function tryMove(dx, dy) {
+        if (gameWon) return;
+
+        const newX = pacman.x + dx;
+        const newY = pacman.y + dy;
+
+        if (!isWall(newX, newY)) {
+            pacman.x = newX;
+            pacman.y = newY;
+            pacman.dirX = dx;
+            pacman.dirY = dy;
+
+            // Mange le point si présent
+            if (map[newY][newX] === '.') {
+                map[newY][newX] = ' ';
+                score++;
+                updateScore();
+                if (score === totalDots) {
+                    gameWon = true;
+                    scoreDiv.textContent = "Score : " + score + "  |  GG, tu as tout mangé !";
+                    // Optionnel : alert("Gagné !");
+                }
+            }
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        switch (e.key) {
+            case 'ArrowUp':
+                tryMove(0, -1);
+                break;
+            case 'ArrowDown':
+                tryMove(0, 1);
+                break;
+            case 'ArrowLeft':
+                tryMove(-1, 0);
+                break;
+            case 'ArrowRight':
+                tryMove(1, 0);
+                break;
+        }
+    });
+
+    function updateScore() {
+        scoreDiv.textContent = "Score : " + score;
+    }
+
+    // ====== BOUCLE DE RENDU (UNIQUEMENT POUR L'ANIM DE LA BOUCHE) ======
+    function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawMap();
+        drawPacman();
+        requestAnimationFrame(loop);
+    }
+
+    // Lancement
+    updateScore();
+    loop();
+</script>
+</body>
+</html>
