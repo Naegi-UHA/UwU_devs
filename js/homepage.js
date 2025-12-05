@@ -195,18 +195,64 @@ function magicAlert(title, message) {
     });
 }
 
-// --- FEUR sur le "quoi" ---
-const quoiFeurBtn = document.getElementById('quoiFeurBtn');
+/* ============================
+   BOUTON "QUOI" → FEUR (SANS ANIMATION)
+   ============================ */
+
+const quoiFeurBtn = document.getElementById("quoiFeurBtn");
+
 if (quoiFeurBtn) {
-    quoiFeurBtn.addEventListener('click', () => {
-        alert('FEUR');
+    quoiFeurBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        feurAlert("FEUR", "😏");
     });
 }
 
+// Pop-up FEUR minimaliste, sans animation
+function feurAlert(title, message) {
+    // supprime une alerte existante
+    const old = document.querySelector(".feur-overlay");
+    if (old) old.remove();
+
+    const overlay = document.createElement("div");
+    overlay.className = "feur-overlay";
+
+    const box = document.createElement("div");
+    box.className = "feur-box";
+
+    box.innerHTML = `
+        <h2>${title}</h2>
+        <p>${message}</p>
+        <button>OK</button>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("button").addEventListener("click", () => {
+        overlay.remove();
+    });
+}
+
+
 // --- Toggle de la card des 3 piliers ---
 const pillarsMainCard = document.getElementById('pillarsMainCard');
-const pillarsToggleBtn = document.getElementById('pillarsToggleBtn');
-const pillarsCardBody = document.getElementById('pillarsCardBody');
+/* ============================
+   PILIERS : Ouverture / Fermeture
+   ============================ */
+
+const pillarsToggleBtn = document.getElementById("pillarsToggleBtn");
+const pillarsCardBody = document.getElementById("pillarsCardBody");
+
+if (pillarsToggleBtn && pillarsCardBody) {
+    pillarsToggleBtn.addEventListener("click", () => {
+        const opened = pillarsCardBody.classList.toggle("open");
+
+        // mettre à jour le texte du bouton
+        pillarsToggleBtn.textContent = opened ? "Masquer" : "Voir";
+    });
+}
+
 
 if (pillarsMainCard && pillarsToggleBtn && pillarsCardBody) {
     // fermé par défaut
