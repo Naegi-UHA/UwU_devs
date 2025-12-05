@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Village Numérique Résistant – NIRD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Une plateforme ludique pour aider les établissements scolaires à résister aux Big Tech et à entrer dans la démarche NIRD.">
+    <link rel="stylesheet" href="css/homepage.css">
+</head>
+<body data-theme="dark">
+
+<header class="main-header">
+    <div class="brand">
+        <div class="logo-moon">
+            <span class="moon"></span>
+            <span class="moon-face"></span>
+        </div>
+        <div class="brand-text">
+            <span class="brand-title">Village Numérique Résistant</span>
+            <span class="brand-subtitle">Nuit de l'Info 2025 · NIRD</span>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#intro">Sujet</a>
+        <a href="#diagnostic">Diagnostic</a>
+        <a href="#parcours">Parcours NIRD</a>
+        <a href="#outils">Outils libres</a>
+        <a href="#ressources">Ressources</a>
+        <button id="themeToggle" class="ghost-btn" aria-label="Basculer mode clair/sombre">
+            🌙 Sobriété
+        </button>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <h1>
+                David contre Goliath&nbsp;:
+                <span class="accent">l'École peut résister aux Big Tech.</span>
+            </h1>
+            <p class="hero-lead">
+                Imaginez votre établissement comme un village d'Astérix&nbsp;:
+                ingénieux, autonome, créatif. Cette plateforme vous aide à
+                réduire vos dépendances numériques et à rejoindre la communauté
+                <strong>NIRD</strong> – Numérique Inclusif, Responsable et Durable.
+            </p>
+            <div class="hero-actions">
+                <button class="primary-btn" onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
+                    🚀 Lancer le parcours résistant
+                </button>
+                <button class="secondary-btn" onclick="document.getElementById('diagnostic').scrollIntoView({behavior: 'smooth'})">
+                    🧪 Faire le diagnostic express
+                </button>
+            </div>
+            
+            <div class="pillars">
+                <div class="pillar-card">
+                    <h3>Inclusion</h3>
+                    <p>Des outils accessibles à tous les élèves, sans barrière financière ni technique.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Responsabilité</h3>
+                    <p>Maîtriser ses données, comprendre ses choix, sortir du «&nbsp;clic automatique&nbsp;».</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Durabilité</h3>
+                    <p>Allonger la vie du matériel, lutter contre l'obsolescence programmée.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-aside">
+            <div class="status-card">
+                <p class="status-label">Fin du support Windows 10</p>
+                <p class="status-value">Octobre 2025</p>
+                <p class="status-note">
+                    Et si c'était une opportunité pour reprendre le contrôle plutôt qu'un simple achat massif de nouveaux PC&nbsp;?
+                </p>
+            </div>
+
+            <div class="hero-timeline">
+                <div class="timeline-point">
+                    <span class="dot dot-red"></span>
+                    <p>Dépendance forte aux Big Tech</p>
+                </div>
+                <div class="timeline-point">
+                    <span class="dot dot-yellow"></span>
+                    <p>Prise de conscience et expérimentation</p>
+                </div>
+                <div class="timeline-point">
+                    <span class="dot dot-green"></span>
+                    <p>Village numérique résistant &amp; NIRD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="intro" class="section section-alt">
+        <div class="section-header">
+            <h2>Le sujet 2025</h2>
+            <p>Comment les établissements scolaires peuvent-ils tenir tête aux Big Tech&nbsp;?</p>
+        </div>
+
+        <div class="grid-2">
+            <article class="card">
+                <h3>Un empire numérique… et des écoles coincées</h3>
+                <p>
+                    Fin du support d’un système propriétaire, licences coûteuses,
+                    écosystèmes fermés, données hébergées hors UE… Les écoles
+                    sont enfermées dans un empire numérique centralisé.
+                </p>
+                <p>
+                    Résultat&nbsp;: budgets explosifs, dépendance technique,
+                    impossibilité d’innover localement, difficulté à éduquer
+                    aux enjeux éthiques du numérique.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>Le village numérique résistant</h3>
+                <p>
+                    La démarche <strong>NIRD</strong> propose une autre voie&nbsp;:
+                    construire un numérique éducatif plus autonome, plus éthique,
+                    plus durable, à partir du terrain.
+                </p>
+                <p>
+                    Votre mission pour la Nuit de l’Info&nbsp;:
+                    créer une application Web qui aide élèves, équipes éducatives
+                    et collectivités à comprendre <strong>comment réduire
+                    progressivement leurs dépendances numériques</strong> et à
+                    entrer dans la démarche NIRD de manière motivante.
+                </p>
+            </article>
+        </div>
+
+        <div class="callout">
+            <strong>Contraintes de la Nuit&nbsp;:</strong>
+            <ul>
+                <li>Application en ligne à la fin de la Nuit.</li>
+                <li>Utilisation de ressources <strong>libres de droit</strong>.</li>
+                <li>Production sous <strong>licence libre</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="diagnostic" class="section">
+        <div class="section-header">
+            <h2>Diagnostic express de dépendance numérique</h2>
+            <p>Cochez ce qui correspond à votre établissement. Le score s’actualise en temps réel.</p>
+        </div>
+
+        <div class="grid-2">
+            <form class="card diagnostic-form">
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="2">
+                        Parc informatique majoritairement sous Windows propriétaire
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="2">
+                        Suite bureautique et cloud d’un seul grand fournisseur (type Office 365 / Google Workspace)
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="1">
+                        Données élèves hébergées hors UE ou sur serveurs peu maîtrisés
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="1">
+                        Renouvellement du matériel principalement dicté par les mises à jour logicielles
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="1">
+                        Très peu d’outils libres connus/utilisés par les équipes pédagogiques
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label>
+                        <input type="checkbox" class="diag-check" data-weight="1">
+                        Aucun temps de formation dédié à la sobriété numérique
+                    </label>
+                </div>
+                <div class="diag-item">
+                    <label class="gaulois-option">
+                        <input type="checkbox" id="gauloisCheck">
+                        Je suis un irréductible Gaulois 🛡️
+                    </label>
+                </div>
+            </form>
+
+            <div class="card diagnostic-result">
+                <h3>Résultat</h3>
+                <p class="diag-score-label">
+                    Score de dépendance&nbsp;:
+                    <span id="diagScore">0</span> / 8
+                </p>
+
+                <div class="flask-wrapper">
+                    <div class="flask-container" id="diagFlask">
+                        <div class="rim"></div>
+                        <div class="flask-body">
+                            <div class="liquid" id="diagLiquid">
+                                <div class="liquid-surface-highlight"></div>
+                                <div class="bubbles-container">
+                                    <div class="bubble b1"></div>
+                                    <div class="bubble b2"></div>
+                                    <div class="bubble b3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p id="diagMessage" class="diag-message">
+                    Cochez les cases à gauche pour obtenir votre diagnostic.
+                </p>
+
+                <div class="diag-legend">
+                    <span><span class="legend-box legend-low"></span>Village résistant</span>
+                    <span><span class="legend-box legend-medium"></span>Transition</span>
+                    <span><span class="legend-box legend-high"></span>Empire Goliath</span>
+                </div>
+
+                <button class="secondary-btn" onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
+                    Voir les étapes pour progresser ➜
+                </button>
+            </div>
+    </section>
+
+    <section id="parcours" class="section section-alt">
+        <div class="section-header">
+            <h2>Parcours vers un Village Numérique Résistant</h2>
+            <p>Un chemin en 5 étapes, inspiré des pratiques NIRD.</p>
+        </div>
+
+        <div class="steps">
+            <article class="step-card active">
+                <header class="step-header">
+                    <span class="step-index">1</span>
+                    <h3>Observer et cartographier</h3>
+                </header>
+                <div class="step-details">
+                    <p>Identifier les usages numériques de l’établissement&nbsp;: systèmes, logiciels, services en ligne, données stockées.</p>
+                    <ul>
+                        <li>Faire participer élèves et éco-délégués.</li>
+                        <li>Repérer les points de dépendance critique.</li>
+                        <li>Ouvrir le débat : quels risques ? quels besoins réels ?</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="step-card">
+                <header class="step-header">
+                    <span class="step-index">2</span>
+                    <h3>Réduire les urgences</h3>
+                </header>
+                <div class="step-details">
+                    <p>Prioriser ce qui met en danger les données ou le budget.</p>
+                    <ul>
+                        <li>Migrer d’abord ce qui coûte le plus ou enferme le plus.</li>
+                        <li>Installer des alternatives libres en parallèle.</li>
+                        <li>Prévoir un plan de sortie des services critiques.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="step-card">
+                <header class="step-header">
+                    <span class="step-index">3</span>
+                    <h3>Expérimenter des solutions libres</h3>
+                </header>
+                <div class="step-details">
+                    <p>Tester des outils libres sur des usages ciblés&nbsp;: salle multimédia, club, projet de classe…</p>
+                    <ul>
+                        <li>Impliquer une équipe pilote volontaire.</li>
+                        <li>Documenter ce qui fonctionne… et ce qui bloque.</li>
+                        <li>Capitaliser pour élargir ensuite.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="step-card">
+                <header class="step-header">
+                    <span class="step-index">4</span>
+                    <h3>Former et donner du pouvoir d’agir</h3>
+                </header>
+                <div class="step-details">
+                    <p>La résistance numérique est d’abord une culture commune.</p>
+                    <ul>
+                        <li>Ateliers élèves sur les données et les licences.</li>
+                        <li>Formations courtes pour les enseignants.</li>
+                        <li>Temps d’échange avec les collectivités.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="step-card">
+                <header class="step-header">
+                    <span class="step-index">5</span>
+                    <h3>Mutualiser et rejoindre NIRD</h3>
+                </header>
+                <div class="step-details">
+                    <p>Ne pas réinventer tout seul&nbsp;: mutualiser outils, pratiques et retours d’expérience.</p>
+                    <ul>
+                        <li>Partager ses scripts, fiches pratiques, scénarios.</li>
+                        <li>Contribuer aux communs numériques éducatifs.</li>
+                        <li>Rejoindre la communauté NIRD pour être accompagné.</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="outils" class="section">
+        <div class="section-header">
+            <h2>Boîte à outils du village résistant</h2>
+            <p>Quelques pistes d’outils libres pour amorcer la transition.</p>
+        </div>
+
+        <div class="tool-grid">
+            <article class="card tool-card">
+                <h3>Système &amp; parc</h3>
+                <ul>
+                    <li>Migrer vers des distributions GNU/Linux adaptées.</li>
+                    <li>Réemployer les anciens PC comme clients légers.</li>
+                    <li>Mettre en place une politique de maintenance partagée.</li>
+                </ul>
+            </article>
+            <article class="card tool-card">
+                <h3>Bureautique &amp; documents</h3>
+                <ul>
+                    <li>Suite bureautique libre (LibreOffice) et formats ouverts.</li>
+                    <li>Encourager le partage de modèles de documents.</li>
+                    <li>Sensibiliser aux formats pérennes (ODF, PDF).</li>
+                </ul>
+            </article>
+            <article class="card tool-card">
+                <h3>Stockage &amp; collaboration</h3>
+                <ul>
+                    <li>Nextcloud pour fichiers, agendas et collaboration.</li>
+                    <li>Espaces de dépôt pour les travaux élèves.</li>
+                    <li>Paramétrage fin des droits d’accès.</li>
+                </ul>
+            </article>
+            <article class="card tool-card">
+                <h3>Pédagogie &amp; simulation</h3>
+                <ul>
+                    <li>Plateformes libres pour quiz (La Quizinière, etc).</li>
+                    <li>Simulateurs et jeux sérieux open source.</li>
+                    <li>Ressources libres (Wikipédia, OpenStreetMap).</li>
+                </ul>
+            </article>
+            <article class="card tool-card">
+                <h3>Création média</h3>
+                <ul>
+                    <li>Montage (Audacity, Kdenlive, Shotcut).</li>
+                    <li>Retouche image (GIMP, Krita) et licences Creative Commons.</li>
+                    <li>Webradio scolaire libre.</li>
+                </ul>
+            </article>
+            <article class="card tool-card">
+                <h3>Gouvernance &amp; éco-conception</h3>
+                <ul>
+                    <li>Charte de sobriété numérique.</li>
+                    <li>Suivi de l'âge du matériel.</li>
+                    <li>Critères éthiques dans les appels d’offre.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section id="ressources" class="section section-alt">
+        <div class="section-header">
+            <h2>Aller plus loin avec NIRD</h2>
+            <p>Pour alimenter la plateforme avec des contenus réels.</p>
+        </div>
+
+        <div class="grid-2">
+            <article class="card">
+                <h3>Les acteurs de la démarche NIRD</h3>
+                <p>NIRD associe&nbsp;:</p>
+                <ul>
+                    <li>Élèves et éco-délégués</li>
+                    <li>Enseignants et directions d’établissement</li>
+                    <li>Techniciens et administrateurs réseau</li>
+                    <li>Collectivités territoriales</li>
+                    <li>Associations partenaires</li>
+                </ul>
+                <p>
+                    La démarche repose sur trois piliers&nbsp;:
+                    <strong>Inclusion</strong>, <strong>Responsabilité</strong>,
+                    <strong>Durabilité</strong>.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>Ressources à intégrer</h3>
+                <ul class="resource-list">
+                    <li><a href="https://nird.forge.apps.education.fr/" target="_blank" rel="noopener">Site officiel NIRD</a></li>
+                    <li>Vidéos sur les logiciels libres éducatifs.</li>
+                    <li>Reportages sur l’obsolescence programmée.</li>
+                    <li>Guides de reconditionnement matériel.</li>
+                </ul>
+                <p class="small">
+                    Enrichissez ces liens sur votre plateforme ou proposez un fil de veille collaboratif.
+                </p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>Forgé avec amour par les UwUdevs (ꈍᴗꈍ) — Ici commence le territoire clownesque de la Flammenküche 🔥</p>
+</footer>
+
+<script src="js/homepage.js"></script>
+</body>
+</html>
