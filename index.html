@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Village Numérique Résistant – NIRD</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-          content="Une plateforme ludique pour aider les établissements scolaires à résister aux Big Tech et à entrer dans la démarche NIRD : Numérique Inclusif, Responsable et Durable.">
+    <meta name="description" content="Une plateforme ludique pour aider les établissements scolaires à résister aux Big Tech et à entrer dans la démarche NIRD.">
     <link rel="stylesheet" href="css/homepage.css">
 </head>
 <body data-theme="dark">
+
 <header class="main-header">
     <div class="brand">
         <div class="logo-moon">
@@ -34,7 +34,6 @@
 </header>
 
 <main>
-    <!-- HERO -->
     <section class="hero" id="top">
         <div class="hero-content">
             <h1>
@@ -48,38 +47,36 @@
                 <strong>NIRD</strong> – Numérique Inclusif, Responsable et Durable.
             </p>
             <div class="hero-actions">
-                <button class="primary-btn" data-scroll="#parcours">
+                <button class="primary-btn" onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
                     🚀 Lancer le parcours résistant
                 </button>
-                <button class="secondary-btn" data-scroll="#diagnostic">
+                <button class="secondary-btn" onclick="document.getElementById('diagnostic').scrollIntoView({behavior: 'smooth'})">
                     🧪 Faire le diagnostic express
                 </button>
             </div>
+            
             <div class="pillars">
                 <div class="pillar-card">
                     <h3>Inclusion</h3>
-                    <p>Des outils accessibles à tous les élèves, sans barrière
-                        financière ni technique.</p>
+                    <p>Des outils accessibles à tous les élèves, sans barrière financière ni technique.</p>
                 </div>
                 <div class="pillar-card">
                     <h3>Responsabilité</h3>
-                    <p>Maîtriser ses données, comprendre ses choix, sortir du
-                        «&nbsp;clic automatique&nbsp;».</p>
+                    <p>Maîtriser ses données, comprendre ses choix, sortir du «&nbsp;clic automatique&nbsp;».</p>
                 </div>
                 <div class="pillar-card">
                     <h3>Durabilité</h3>
-                    <p>Allonger la vie du matériel, lutter contre
-                        l'obsolescence programmée.</p>
+                    <p>Allonger la vie du matériel, lutter contre l'obsolescence programmée.</p>
                 </div>
             </div>
         </div>
+
         <div class="hero-aside">
             <div class="status-card">
                 <p class="status-label">Fin du support Windows 10</p>
                 <p class="status-value">Octobre 2025</p>
                 <p class="status-note">
-                    Et si c'était une opportunité pour reprendre le contrôle
-                    plutôt qu'un simple achat massif de nouveaux PC&nbsp;?
+                    Et si c'était une opportunité pour reprendre le contrôle plutôt qu'un simple achat massif de nouveaux PC&nbsp;?
                 </p>
             </div>
 
@@ -100,7 +97,6 @@
         </div>
     </section>
 
-    <!-- INTRO / SUJET -->
     <section id="intro" class="section section-alt">
         <div class="section-header">
             <h2>Le sujet 2025</h2>
@@ -149,7 +145,6 @@
         </div>
     </section>
 
-    <!-- DIAGNOSTIC -->
     <section id="diagnostic" class="section">
         <div class="section-header">
             <h2>Diagnostic express de dépendance numérique</h2>
@@ -167,29 +162,25 @@
                 <div class="diag-item">
                     <label>
                         <input type="checkbox" class="diag-check" data-weight="2">
-                        Suite bureautique et cloud d’un seul grand fournisseur
-                        (type Office 365 / Google Workspace)
+                        Suite bureautique et cloud d’un seul grand fournisseur (type Office 365 / Google Workspace)
                     </label>
                 </div>
                 <div class="diag-item">
                     <label>
                         <input type="checkbox" class="diag-check" data-weight="1">
-                        Données élèves hébergées hors UE ou sur serveurs peu
-                        maîtrisés
+                        Données élèves hébergées hors UE ou sur serveurs peu maîtrisés
                     </label>
                 </div>
                 <div class="diag-item">
                     <label>
                         <input type="checkbox" class="diag-check" data-weight="1">
-                        Renouvellement du matériel principalement dicté par les
-                        mises à jour logicielles
+                        Renouvellement du matériel principalement dicté par les mises à jour logicielles
                     </label>
                 </div>
                 <div class="diag-item">
                     <label>
                         <input type="checkbox" class="diag-check" data-weight="1">
-                        Très peu d’outils libres connus/utilisés par les équipes
-                        pédagogiques
+                        Très peu d’outils libres connus/utilisés par les équipes pédagogiques
                     </label>
                 </div>
                 <div class="diag-item">
@@ -198,58 +189,52 @@
                         Aucun temps de formation dédié à la sobriété numérique
                     </label>
                 </div>
+                <div class="diag-item">
+                    <label class="gaulois-option">
+                        <input type="checkbox" id="gauloisCheck">
+                        Je suis un irréductible Gaulois 🛡️
+                    </label>
+                </div>
             </form>
 
-<div class="card diagnostic-result">
-    <h3>Résultat</h3>
-    <p class="diag-score-label">
-        Score de dépendance&nbsp;:
-        <span id="diagScore">0</span> / 8
-    </p>
+            <div class="card diagnostic-result">
+                <h3>Résultat</h3>
+                <p class="diag-score-label">
+                    Score de dépendance&nbsp;:
+                    <span id="diagScore">0</span> / 8
+                </p>
 
-    <!-- FIOLE DIAGNOSTIC -->
-    <div class="flask-wrapper">
-        <div class="flask-container" id="diagFlask">
-            <div class="rim"></div>
-
-            <div class="flask-body">
-                <div class="liquid" id="diagLiquid">
-                    <div class="liquid-surface-highlight"></div>
-
-                    <div class="bubbles-container">
-                        <div class="bubble b1"></div>
-                        <div class="bubble b2"></div>
-                        <div class="bubble b3"></div>
-                        <div class="bubble b4"></div>
-                        <div class="bubble b5"></div>
-                        <div class="bubble b6"></div>
-                        <div class="bubble b7"></div>
+                <div class="flask-wrapper">
+                    <div class="flask-container" id="diagFlask">
+                        <div class="rim"></div>
+                        <div class="flask-body">
+                            <div class="liquid" id="diagLiquid">
+                                <div class="liquid-surface-highlight"></div>
+                                <div class="bubbles-container">
+                                    <div class="bubble b1"></div>
+                                    <div class="bubble b2"></div>
+                                    <div class="bubble b3"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <p id="diagMessage" class="diag-message">
+                    Cochez les cases à gauche pour obtenir votre diagnostic.
+                </p>
+
+                <div class="diag-legend">
+                    <span><span class="legend-box legend-low"></span>Village résistant</span>
+                    <span><span class="legend-box legend-medium"></span>Transition</span>
+                    <span><span class="legend-box legend-high"></span>Empire Goliath</span>
+                </div>
+
+                <button class="secondary-btn" onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
+                    Voir les étapes pour progresser ➜
+                </button>
             </div>
-        </div>
-    </div>
-    <!-- /FIOLE -->
-
-    <p id="diagMessage" class="diag-message">
-        Cochez les cases à gauche pour obtenir votre diagnostic.
-    </p>
-
-    <div class="diag-legend">
-        <span><span class="legend-box legend-low"></span>Village déjà bien résistant</span>
-        <span><span class="legend-box legend-medium"></span>Transition en cours</span>
-        <span><span class="legend-box legend-high"></span>Goliath a encore la main</span>
-    </div>
-
-    <button class="secondary-btn" data-scroll="#parcours">
-        Voir les étapes pour progresser ➜
-    </button>
-</div>
-</div>
-        </div>
     </section>
 
-    <!-- PARCOURS NIRD -->
     <section id="parcours" class="section section-alt">
         <div class="section-header">
             <h2>Parcours vers un Village Numérique Résistant</h2>
@@ -263,10 +248,7 @@
                     <h3>Observer et cartographier</h3>
                 </header>
                 <div class="step-details">
-                    <p>
-                        Identifier les usages numériques de l’établissement&nbsp;:
-                        systèmes, logiciels, services en ligne, données stockées.
-                    </p>
+                    <p>Identifier les usages numériques de l’établissement&nbsp;: systèmes, logiciels, services en ligne, données stockées.</p>
                     <ul>
                         <li>Faire participer élèves et éco-délégués.</li>
                         <li>Repérer les points de dépendance critique.</li>
@@ -281,9 +263,7 @@
                     <h3>Réduire les urgences</h3>
                 </header>
                 <div class="step-details">
-                    <p>
-                        Prioriser ce qui met en danger les données ou le budget.
-                    </p>
+                    <p>Prioriser ce qui met en danger les données ou le budget.</p>
                     <ul>
                         <li>Migrer d’abord ce qui coûte le plus ou enferme le plus.</li>
                         <li>Installer des alternatives libres en parallèle.</li>
@@ -298,10 +278,7 @@
                     <h3>Expérimenter des solutions libres</h3>
                 </header>
                 <div class="step-details">
-                    <p>
-                        Tester des outils libres sur des usages ciblés&nbsp;:
-                        salle multimédia, club, projet de classe…
-                    </p>
+                    <p>Tester des outils libres sur des usages ciblés&nbsp;: salle multimédia, club, projet de classe…</p>
                     <ul>
                         <li>Impliquer une équipe pilote volontaire.</li>
                         <li>Documenter ce qui fonctionne… et ce qui bloque.</li>
@@ -316,9 +293,7 @@
                     <h3>Former et donner du pouvoir d’agir</h3>
                 </header>
                 <div class="step-details">
-                    <p>
-                        La résistance numérique est d’abord une culture commune.
-                    </p>
+                    <p>La résistance numérique est d’abord une culture commune.</p>
                     <ul>
                         <li>Ateliers élèves sur les données et les licences.</li>
                         <li>Formations courtes pour les enseignants.</li>
@@ -333,10 +308,7 @@
                     <h3>Mutualiser et rejoindre NIRD</h3>
                 </header>
                 <div class="step-details">
-                    <p>
-                        Ne pas réinventer tout seul&nbsp;: mutualiser outils,
-                        pratiques et retours d’expérience.
-                    </p>
+                    <p>Ne pas réinventer tout seul&nbsp;: mutualiser outils, pratiques et retours d’expérience.</p>
                     <ul>
                         <li>Partager ses scripts, fiches pratiques, scénarios.</li>
                         <li>Contribuer aux communs numériques éducatifs.</li>
@@ -347,7 +319,6 @@
         </div>
     </section>
 
-    <!-- OUTILS LIBRES -->
     <section id="outils" class="section">
         <div class="section-header">
             <h2>Boîte à outils du village résistant</h2>
@@ -358,7 +329,7 @@
             <article class="card tool-card">
                 <h3>Système &amp; parc</h3>
                 <ul>
-                    <li>Migrer progressivement vers des distributions GNU/Linux adaptées à l’éducation.</li>
+                    <li>Migrer vers des distributions GNU/Linux adaptées.</li>
                     <li>Réemployer les anciens PC comme clients légers.</li>
                     <li>Mettre en place une politique de maintenance partagée.</li>
                 </ul>
@@ -366,15 +337,15 @@
             <article class="card tool-card">
                 <h3>Bureautique &amp; documents</h3>
                 <ul>
-                    <li>Utiliser une suite bureautique libre compatible avec les formats ouverts.</li>
+                    <li>Suite bureautique libre (LibreOffice) et formats ouverts.</li>
                     <li>Encourager le partage de modèles de documents.</li>
-                    <li>Sensibiliser aux formats pérennes (ODF, PDF). </li>
+                    <li>Sensibiliser aux formats pérennes (ODF, PDF).</li>
                 </ul>
             </article>
             <article class="card tool-card">
                 <h3>Stockage &amp; collaboration</h3>
                 <ul>
-                    <li>Instances Nextcloud-like pour le partage de fichiers et agendas.</li>
+                    <li>Nextcloud pour fichiers, agendas et collaboration.</li>
                     <li>Espaces de dépôt pour les travaux élèves.</li>
                     <li>Paramétrage fin des droits d’accès.</li>
                 </ul>
@@ -382,31 +353,30 @@
             <article class="card tool-card">
                 <h3>Pédagogie &amp; simulation</h3>
                 <ul>
-                    <li>Plateformes libres pour exercices interactifs et quiz.</li>
+                    <li>Plateformes libres pour quiz (La Quizinière, etc).</li>
                     <li>Simulateurs et jeux sérieux open source.</li>
-                    <li>Banques de ressources libres pour illustrer les cours.</li>
+                    <li>Ressources libres (Wikipédia, OpenStreetMap).</li>
                 </ul>
             </article>
             <article class="card tool-card">
                 <h3>Création média</h3>
                 <ul>
-                    <li>Montage audio/vidéo avec des logiciels libres.</li>
-                    <li>Ateliers de retouche d’image en expliquant les licences.</li>
-                    <li>Projets radio, podcast ou webzine du lycée.</li>
+                    <li>Montage (Audacity, Kdenlive, Shotcut).</li>
+                    <li>Retouche image (GIMP, Krita) et licences Creative Commons.</li>
+                    <li>Webradio scolaire libre.</li>
                 </ul>
             </article>
             <article class="card tool-card">
                 <h3>Gouvernance &amp; éco-conception</h3>
                 <ul>
-                    <li>Charte de sobriété numérique co-construite.</li>
-                    <li>Suivi des consommations et de la durée de vie du matériel.</li>
-                    <li>Critères éthiques dans les prochains appels d’offre.</li>
+                    <li>Charte de sobriété numérique.</li>
+                    <li>Suivi de l'âge du matériel.</li>
+                    <li>Critères éthiques dans les appels d’offre.</li>
                 </ul>
             </article>
         </div>
     </section>
 
-    <!-- RESSOURCES / NIRD -->
     <section id="ressources" class="section section-alt">
         <div class="section-header">
             <h2>Aller plus loin avec NIRD</h2>
@@ -422,8 +392,7 @@
                     <li>Enseignants et directions d’établissement</li>
                     <li>Techniciens et administrateurs réseau</li>
                     <li>Collectivités territoriales</li>
-                    <li>Services académiques et ministère</li>
-                    <li>Associations partenaires et clubs informatiques</li>
+                    <li>Associations partenaires</li>
                 </ul>
                 <p>
                     La démarche repose sur trois piliers&nbsp;:
@@ -433,43 +402,23 @@
             </article>
 
             <article class="card">
-                <h3>Ressources à intégrer dans votre appli</h3>
+                <h3>Ressources à intégrer</h3>
                 <ul class="resource-list">
-                    <li><a href="https://nird.forge.apps.education.fr/" target="_blank" rel="noopener">
-                        Site officiel NIRD</a></li>
-                    <li>Vidéos courtes sur l’alternative des logiciels libres.</li>
-                    <li>Reportages audio sur l’obsolescence programmée.</li>
-                    <li>Exemples d’établissements déjà engagés dans NIRD.</li>
-                    <li>Guides pour réemployer et reconditionner le matériel.</li>
+                    <li><a href="https://nird.forge.apps.education.fr/" target="_blank" rel="noopener">Site officiel NIRD</a></li>
+                    <li>Vidéos sur les logiciels libres éducatifs.</li>
+                    <li>Reportages sur l’obsolescence programmée.</li>
+                    <li>Guides de reconditionnement matériel.</li>
                 </ul>
                 <p class="small">
-                    Sur votre propre plateforme, vous pourrez enrichir ces liens,
-                    intégrer des extraits, ou proposer un fil de veille collaboratif.
+                    Enrichissez ces liens sur votre plateforme ou proposez un fil de veille collaboratif.
                 </p>
             </article>
         </div>
-
-        <div class="closing card">
-            <h3>Conclusion</h3>
-            <p>
-                Cette page n’est qu’une <strong>porte d’entrée</strong> :
-                à vous d’en faire un véritable outil participatif pendant la Nuit,
-                en ajoutant comptes utilisateurs, contributions, défis,
-                scénarios, ou parcours gamifiés autour de la résistance numérique.
-            </p>
-            <p class="closing-highlight">
-                Soyez inventifs, surprenants, pédagogiques… et amusez-vous&nbsp;!
-            </p>
-        </div>
-
     </section>
 </main>
 
-<footer class="main-footer">
-    <p>
-        Fait pour la Nuit de l’Info 2025 – Sujet “Village Numérique Résistant”.
-        Contenu proposé sous licence libre (à adapter selon votre choix exact).
-    </p>
+<footer class="site-footer">
+    <p>Forgé avec amour par les UwUdevs (ꈍᴗꈍ) — Ici commence le territoire clownesque de la Flammenküche 🔥</p>
 </footer>
 
 <script src="js/homepage.js"></script>

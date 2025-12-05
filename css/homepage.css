@@ -551,11 +551,19 @@ section {
 
 /* ===================== FOOTER ===================== */
 
-.main-footer {
-    padding: 1.5rem 6vw 2.2rem;
-    font-size: 0.8rem;
-    opacity: 0.7;
+.site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
     text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    color: #e5e7eb;
+    border-top: 1px solid rgba(148,163,184,0.3);
+}
+
+body[data-theme="light"] .site-footer {
+    color: #1e293b;
+    border-top-color: rgba(100,100,120,0.35);
 }
 
 /* ===================== RESPONSIVE ===================== */
@@ -911,13 +919,13 @@ body[data-theme="light"] .resource-list a {
     content: "";
     position: absolute;
     inset: -60px;                 /* beaucoup plus large */
-    border-radius: 50%;
+    border-radius: 90%;
     background: radial-gradient(
         circle,
-        rgba(255, 255, 200, 0.95) 0%,
-        rgba(255, 200, 80, 0.75) 25%,
-        rgba(255, 100, 50, 0.55) 50%,
-        transparent 80%
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(205, 91, 91, 0.75) 30%,
+        rgba(255, 0, 0, 1) 50%,
+        transparent 90%
     );
     pointer-events: none;
     animation: flaskGlowSuper 1.2s ease-in-out infinite alternate;
@@ -965,14 +973,18 @@ body[data-theme="light"] .resource-list a {
 }
 
 .flask-container.full {
+    animation: flaskShakeUltra 0.4s ease-in-out infinite;
+}
+
+.flask-container.full.gaulois {
     animation: flaskWiggleStrong 0.8s ease-in-out infinite;
 }
 
 /* Flash + MEGA shake ponctuel quand on clique (classe .shake + .flash) */
 @keyframes flaskShakeUltra {
     0%   { transform: scale(0.5) translateX(0) rotate(0deg); }
-    20%  { transform: scale(0.5) translateX(-8px) rotate(-6deg); }
-    40%  { transform: scale(0.5) translateX(8px) rotate(6deg); }
+    20%  { transform: scale(0.5) translateX(-8px) rotate(-8deg); }
+    40%  { transform: scale(0.5) translateX(8px) rotate(8deg); }
     60%  { transform: scale(0.5) translateX(-5px) rotate(-4deg); }
     80%  { transform: scale(0.5) translateX(5px) rotate(4deg); }
     100% { transform: scale(0.5) translateX(0) rotate(0deg); }
@@ -992,3 +1004,109 @@ body[data-theme="light"] .resource-list a {
 .flask-container.flash::before {
     animation: flaskFlashBig 0.45s ease-out;
 }
+
+
+/* Mode irréductible Gaulois : liquide vert uni */
+.flask-container.gaulois .liquid {
+    background: #22c55e;          /* vert uniforme */
+}
+
+
+/* Halo VERT quand la fiole est full en mode Gaulois */
+.flask-container.gaulois.full::before {
+background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(106, 193, 161, 0.9) 35%,
+    rgba(18, 150, 66, 0.75) 55%,
+    transparent 80%
+);
+    z-index: -1; /* reste derrière la fiole */
+}
+
+/* ===================== ALERTES MAGIQUES GAULOISES ===================== */
+
+.flash-alert-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.flash-alert {
+    background: radial-gradient(circle, #ffffff, #e8fce8 70%);
+    border-radius: 18px;
+    padding: 1.6rem 2rem;
+    width: min(380px, 90%);
+    box-shadow:
+        0 0 40px rgba(255, 50, 50, 0.9),
+        0 0 80px rgba(211, 0, 0, 0.6);
+    text-align: center;
+    color: #000000;
+    font-weight: 600;
+    position: relative;
+}
+
+.flash-alert h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+}
+
+.flash-alert p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.flash-alert button {
+    background: linear-gradient(135deg, #b92910, #960505);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(185, 22, 16, 0.5);
+    transition: transform 0.1s ease;
+}
+
+.flash-alert button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes alertPop {
+    0% { transform: scale(0.6); opacity: 0; filter: brightness(1.4); }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes alertShakeUltra {
+    0%   { transform: translateX(0) rotate(0deg); }
+    20%  { transform: translateX(-10px) rotate(-4deg); }
+    40%  { transform: translateX(10px) rotate(4deg); }
+    60%  { transform: translateX(-6px) rotate(-3deg); }
+    80%  { transform: translateX(6px) rotate(3deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes alertFlash {
+    0%   { filter: brightness(1); }
+    50%  { filter: brightness(1.8); }
+    100% { filter: brightness(1); }
+}
+
+/* Shake ULTRA + flash en même temps sur la même box */
+.flash-alert.alert-shake {
+    animation: alertShakeUltra 0.7s ease-in-out infinite, alertFlash 0.6s ease-out infinite;
+}
+
