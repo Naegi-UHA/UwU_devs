@@ -115,6 +115,11 @@ body {
     transform: translateY(-1px);
 }
 
+h4{
+    margin-bottom: 0.4rem;
+    color: #17b246;
+}
+
 /* ===================== SECTIONS ===================== */
 
 section {
@@ -814,10 +819,10 @@ body[data-theme="light"] .resource-list a {
     background: linear-gradient(
         to top,
         #22c55e 0%,    /* vert */
-        #22c55e 25%,
-        #facc15 45%,   /* jaune */
+        #22c55e 20%,
+        #facc15 35%,   /* jaune */
         #fb923c 65%,   /* orange */
-        #ef4444 100%   /* rouge */
+        #ef4444 90%   /* rouge */
     );
     /* On masque la partie du haut en fonction de --liquid-cut */
     clip-path: inset(var(--liquid-cut, 100%) 0 0 0);
@@ -1018,7 +1023,7 @@ background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.95) 0%,
     rgba(106, 193, 161, 0.9) 35%,
-    rgba(18, 150, 66, 0.75) 55%,
+    rgba(0, 150, 0, 0.75) 55%,
     transparent 80%
 );
     z-index: -1; /* reste derrière la fiole */
@@ -1110,3 +1115,75 @@ background: radial-gradient(
     animation: alertShakeUltra 0.7s ease-in-out infinite, alertFlash 0.6s ease-out infinite;
 }
 
+/* --------- Card "C'est quoi les 3 piliers ?" --------- */
+
+.pillars-main-card {
+    margin-top: 1.3rem;
+}
+
+.pillars-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.pillars-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* bouton "quoi" cliquable façon lien */
+.quoi-feur-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: #38bdf8;
+    text-decoration: underline dotted;
+    font: inherit;
+}
+
+.quoi-feur-btn:hover {
+    color: #60e0ff;
+}
+
+/* bouton Voir / Masquer */
+.pillars-toggle-btn {
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.pillars-toggle-btn:hover {
+    background: rgba(30, 64, 175, 0.8);
+}
+
+/* corps repliable (fermé par défaut) */
+.pillars-card-body {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.25s ease,
+        margin-top 0.25s ease;
+}
+
+/* quand c'est ouvert */
+.pillars-main-card.expanded .pillars-card-body {
+    max-height: 600px; /* assez grand pour les 3 cartes */
+    opacity: 1;
+    margin-top: 0.8rem;
+}
+
+/* on enlève le margin-top par défaut de la grille à l'intérieur de la card */
+.pillars-main-card .pillars {
+    margin-top: 0;
+}

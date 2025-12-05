@@ -194,3 +194,38 @@ function magicAlert(title, message) {
         overlay.remove();
     });
 }
+
+// --- FEUR sur le "quoi" ---
+const quoiFeurBtn = document.getElementById('quoiFeurBtn');
+if (quoiFeurBtn) {
+    quoiFeurBtn.addEventListener('click', () => {
+        alert('FEUR');
+    });
+}
+
+// --- Toggle de la card des 3 piliers ---
+const pillarsMainCard = document.getElementById('pillarsMainCard');
+const pillarsToggleBtn = document.getElementById('pillarsToggleBtn');
+const pillarsCardBody = document.getElementById('pillarsCardBody');
+
+if (pillarsMainCard && pillarsToggleBtn && pillarsCardBody) {
+    // fermé par défaut
+    pillarsToggleBtn.textContent = 'Voir';
+    pillarsToggleBtn.setAttribute('aria-expanded', 'false');
+    pillarsCardBody.style.maxHeight = '0px';
+
+    pillarsToggleBtn.addEventListener('click', () => {
+        const isExpanded = pillarsMainCard.classList.toggle('expanded');
+
+        if (isExpanded) {
+            // on calcule la hauteur réelle pour l'anim
+            pillarsCardBody.style.maxHeight = pillarsCardBody.scrollHeight + 'px';
+            pillarsToggleBtn.textContent = 'Masquer';
+            pillarsToggleBtn.setAttribute('aria-expanded', 'true');
+        } else {
+            pillarsCardBody.style.maxHeight = '0px';
+            pillarsToggleBtn.textContent = 'Voir';
+            pillarsToggleBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
