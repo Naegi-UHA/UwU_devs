@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rouletteBox = document.getElementById('roulette-box');
     const btnStop = document.getElementById('btn-stop');
     const btnDelete = document.getElementById('btn-delete');
+    const btnHome = document.getElementById('btn-home');
     const allInputs = document.querySelectorAll('.field');
     const wrapperStop = document.getElementById('wrapper-stop');
     const wrapperDelete = document.getElementById('wrapper-delete');
@@ -60,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let vy = (Math.random() - 0.5) * 1.5;
         
         // Vitesse minimale pour éviter que ça stagne
-        if (Math.abs(vx) < 0.3) vx = 0.5;
-        if (Math.abs(vy) < 0.3) vy = 0.5;
+        if (Math.abs(vx) < 0.3) vx = 1.5;
+        if (Math.abs(vy) < 0.3) vy = 1.5;
 
         let rect = el.getBoundingClientRect();
 
@@ -119,6 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
             currentInput.value = currentInput.value.slice(0, -1);
         }
         swapButtonsPosition();
+    });
+
+    // Bouton HOME
+    btnHome.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.location.href = "index.html";
     });
 
     // --- 6. GESTION DES COLLISIONS ET ANIMATION ---
