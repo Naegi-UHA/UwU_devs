@@ -1,10 +1,11 @@
 const gameArea = document.getElementById("gameArea");
-// NOUVEAU: Références aux boutons et à l'affichage
+// Références aux boutons et à l'affichage
 const speedUpBtn = document.getElementById("speedUpBtn");
 const speedDownBtn = document.getElementById("speedDownBtn");
 const currentSpeedDisplay = document.getElementById("currentSpeedDisplay");
+const nextLevelBtn = document.getElementById("nextLevelBtn");
 
-const gameSize = { width: 300, height: 300 };
+const gameSize = { width: 240, height: 240 };
 const snakeSize = 30;
 let snake = [{ x: 150, y: 150 }];
 let food = { x: 60, y: 60 };
@@ -93,6 +94,11 @@ function moveSnake() {
 
     if (head.x === food.x && head.y === food.y) {
         placeFood();
+        // Condition de victoire : longueur atteinte (ici, 6 unités)
+        if (snake.length >= 6) {
+            winLevel();
+            return;
+        }
     } else {
         snake.pop();
     }
@@ -107,13 +113,13 @@ function moveSnake() {
             index !== 0 && segment.x === head.x && segment.y === head.y
         )
     ) {
-        // Game over
+        // Game over : réinitialiser partie
         snake = [{ x: 150, y: 150 }];
         direction = { x: 0, y: 0 };
         // Réinitialiser la vitesse par défaut
-        gameSpeed = 200; 
+        gameSpeed = 200;
         updateSpeedDisplay(); // Mettre à jour l'affichage
-        startGameInterval(gameSpeed); 
+        startGameInterval(gameSpeed);
         alert("Game over");
     }
 }
@@ -121,11 +127,9 @@ function moveSnake() {
 function placeFood() {
     food = {
         x: Math.floor(Math.random() * (gameSize.width / snakeSize)) * snakeSize,
-        y:
-            Math.floor(Math.random() * (gameSize.height / snakeSize)) * snakeSize,
+        y: Math.floor(Math.random() * (gameSize.height / snakeSize)) * snakeSize,
     };
 }
-
 
 const inputQueue = [];
 
@@ -139,21 +143,10 @@ document.addEventListener("keydown", (e) => {
     }
     if (!newDir) return;
 
-    // Empêcher les directions qui sont l'opposé immédiat de la dernière direction réelle
-    // On compare avec la dernière direction effective (direction) ou la dernière en queue
     const lastDir = inputQueue.length ? inputQueue[inputQueue.length - 1] : direction;
-
-    // Refuser l'inverse direct (180°)
     if (newDir.x === -lastDir.x && newDir.y === -lastDir.y) return;
-
-    // Optionnel : limiter la taille de la file (ex: max 2)
     if (inputQueue.length < 2) inputQueue.push(newDir);
 });
-
-
-
-
-// --- Nouvelle gestion de la vitesse ---
 
 function updateSpeedDisplay() {
     currentSpeedDisplay.textContent = `Vitesse: ${gameSpeed} ms`;
@@ -168,21 +161,10 @@ function startGameInterval(speed) {
 }
 
 function changeSpeed(percentageChange) {
-    // Calcul du changement : 20% de la vitesse actuelle (délai en ms)
     const step = Math.round(gameSpeed * percentageChange);
-    
-    // Le nouveau délai est l'ancien délai PLUS le pas
-    // Ex: Si on augmente le délai (+20%), le serpent ralentit (gameSpeed augmente).
-    // Ex: Si on diminue le délai (-20%), le serpent accélère (gameSpeed diminue).
     let newSpeed = gameSpeed + step;
-
-    // S'assurer que la nouvelle vitesse reste dans les limites
     newSpeed = Math.max(MIN_SPEED, Math.min(MAX_SPEED, newSpeed));
-    
-    // Mettre à jour la vitesse
     gameSpeed = newSpeed;
-    
-    // Mettre à jour l'interface utilisateur et le jeu
     updateSpeedDisplay();
     startGameInterval(gameSpeed);
 }
@@ -202,7 +184,7 @@ speedDownBtn.addEventListener('click', () => {
 });
 
 
-// Initialisation du jeu
+// Initialisation
 placeFood();
 drawSnake();
 updateSpeedDisplay(); // Afficher la vitesse initiale
