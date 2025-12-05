@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>UwUDevs Retro Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <title>UwU Retro Game</title>
     <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
-<!-- About Page -->
+<!-- Menu -->
 <div id="menu">
-    <h1 class="neon-text">UwUDevs Retro Game</h1>
+    <h1 class="neon-text">UwU Retro Game</h1>
     <div id="about">
-        <p>Welcome to the NIRD project...</p>
-        <p>A digital world that is inclusive, responsible and sustainable...</p>
-        <p>Resisting Big Tech is possible!</p>
-        <p>Reuse, free software, digital autonomy...</p>
-        <p>Join the Resistant Village ✨👾</p>
+        <h2 class="instructions-title">🎮 Instructions</h2>
+        <ul class="instructions-list">
+            <li>🖱️ Clique pour <span class="highlight">tirer</span></li>
+            <li>⚠️ Évite que les <span class="highlight">ennemis</span> atteignent le bas</li>
+            <li>⚠️ Ne touche pas les <span class="highlight">ennemis</span> tu pourrais perdre de la vie</li>
+            <li>✦ Bonus = <span class="highlight">tir rapide x2</span> pendant 10s</li>
+            <li>👾 Boss = <span class="highlight">+10 points</span></li>
+            <li>↩️ Touche <span class="highlight">ENTER</span> = Restart après Game Over</li>
+        </ul>
     </div>
-    <button id="start-btn">▶ START</button>
+
+    <button id="start-btn">Start Game</button>
 </div>
 
-<!-- Game Area -->
+<!-- Zone de jeu -->
 <div id="game" class="hidden">
     <div id="score">Score: 0</div>
-    <div id="lives">
-        <div class="life-icon"></div>
-        <div class="life-icon"></div>
-        <div class="life-icon"></div>
-    </div>
+    <div id="lives"></div>
     <div id="game-area"></div>
 </div>
 
-<!-- Game Over Screen -->
+<!-- Game Over -->
 <div id="game-over" class="hidden">
-    <h1 class="neon-text">GAME OVER</h1>
-    <p id="final-score">Your Score: 0</p>
-    <p id="best-score">Best Record: 0</p>
+    <h1>GAME OVER</h1>
+    <p id="final-score"></p>
+    <p id="best-score"></p>
     <button id="restart-btn">Restart</button>
 </div>
+
+<!-- Banners -->
+<div id="uwu-banner" class="uwu-banner">UWU</div>
+<div id="bonus-banner" class="bonus-banner">x2</div>
 
 <script src="js/game.js"></script>
 </body>
