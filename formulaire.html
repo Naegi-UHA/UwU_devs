@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIRD Terminal - Secure Resistance Shell</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="formulaire.css">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    <div class="crt-overlay"></div>
+    <div class="scanline"></div>
+    <div class="screen-flicker"></div>
+    <div id="disco-overlay" class="hidden"></div> 
+
+    <div class="container" id="main-wrapper">
+        <div class="window" id="terminal-screen-wrapper">
+            <div class="window-header">
+                <div class="window-buttons">
+                    </div>
+                <div class="window-title">nird@SECURE-PROTOCOL: ~</div>
+            </div>
+
+            <div class="terminal-body" id="terminal-output">
+                <div class="output-line ascii-art">
+███╗&nbsp;&nbsp;&nbsp;██╗██╗██████╗&nbsp;██████╗ 
+████╗&nbsp;&nbsp;██║██║██╔══██╗██╔══██╗
+██╔██╗&nbsp;██║██║██████╔╝██║&nbsp;██║
+██║╚██╗██║██║██╔══██╗██║&nbsp;██║
+██║&nbsp;╚████║██║██║&nbsp;██║██████╔╝
+╚═╝&nbsp;╚═══╝╚═╝╚═╝&nbsp;╚═╝╚═════╝ 
+                </div>
+                <div class="output-line success">
+╔════════════════════════════════════════════════════════╗
+    &nbsp;ACCÈS SHELL - PROTOCOLE DE RÉSISTANCE SECURE 
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Transmettez le Manifeste 
+╚════════════════════════════════════════════════════════╝
+                </div>
+                <div class="output-line info">
+Tapez 'help' pour visualiser les PROTOCOLES DE MISSION disponibles.
+</div>
+            </div>
+
+            <div class="input-line">
+                <span class="input-prompt" id="input-prompt">agent@nird:~$</span>
+                <input type="text" id="terminal-input" autofocus autocomplete="off">
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-success" class="modal hidden">
+        <div class="modal-content">
+            <h1 class="glitch" data-text="MISSION ACCOMPLIE">MISSION ACCOMPLIE</h1>
+            <p>Le manifeste a été injecté dans le réseau.</p>
+            <div class="progress-bar-final"><div class="fill"></div></div>
+            <p style="color:var(--secondary-color); font-size: 0.8em;">Déconnexion sécurisée en cours...</p>
+            <button onclick="location.reload()">[ TERMINER LA SESSION ]</button>
+        </div>
+    </div>
+    
+    <script src="formulaire.js"></script>
+</body>
+</html>
