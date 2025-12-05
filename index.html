@@ -34,42 +34,75 @@
 
 <main>
     <section class="hero" id="top">
+        <!-- COLONNE GAUCHE -->
         <div class="hero-content">
             <h1>
                 Davix contre Goliathius Maximus&nbsp;:
                 <span class="accent">l'École peut résister aux Big Tech.</span>
             </h1>
+
             <p class="hero-lead">
                 Imaginez votre établissement comme un village d'Astérix&nbsp;:
                 ingénieux, autonome, créatif. Cette plateforme vous aide à
                 réduire vos dépendances numériques et à rejoindre la communauté
                 <strong>NIRD</strong> – Numérique Inclusif, Responsable et Durable.
             </p>
+
             <div class="hero-actions">
-                <button class="primary-btn" onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
+                <button class="primary-btn"
+                        onclick="document.getElementById('parcours').scrollIntoView({behavior: 'smooth'})">
                     🚀 Lancer le parcours résistant
                 </button>
-                <button class="secondary-btn" onclick="document.getElementById('diagnostic').scrollIntoView({behavior: 'smooth'})">
+                <button class="secondary-btn"
+                        onclick="document.getElementById('diagnostic').scrollIntoView({behavior: 'smooth'})">
                     🧪 Faire le diagnostic express
                 </button>
             </div>
-            
-            <div class="pillars">
-                <div class="pillar-card">
-                    <h3>Inclusion</h3>
-                    <p>Des outils accessibles à tous les élèves, sans barrière financière ni technique.</p>
+
+            <!-- CARD PLIABLE DES 3 PILIERS -->
+            <div class="card pillars-main-card" id="pillarsMainCard">
+                <div class="pillars-card-header">
+                    
+                    <span class="pillars-card-title">
+                        <h2>
+                        C'est
+                        <button type="button" class="quoi-feur-btn" id="quoiFeurBtn">
+                            quoi
+                        </button>
+                        les 3 piliers ?
+                        </h2>
+                    </span>
+                    
+
+                    <button type="button"
+                            class="pillars-toggle-btn"
+                            id="pillarsToggleBtn"
+                            aria-expanded="false">
+                        Voir
+                    </button>
                 </div>
-                <div class="pillar-card">
-                    <h3>Responsabilité</h3>
-                    <p>Maîtriser ses données, comprendre ses choix, sortir du «&nbsp;clic automatique&nbsp;».</p>
-                </div>
-                <div class="pillar-card">
-                    <h3>Durabilité</h3>
-                    <p>Allonger la vie du matériel, lutter contre l'obsolescence programmée.</p>
+
+                <div class="pillars-card-body" id="pillarsCardBody">
+                    <div class="pillars">
+                        <div class="pillar-card">
+                            <h3>🌸⚔️🪨 Inclusion</h3>
+                            <p>Des outils accessibles à tous les élèves, sans barrière financière ni technique.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h3>⚔️🔥🦾 Responsabilité</h3>
+                            <p>Maîtriser ses données, comprendre ses choix, sortir du «&nbsp;clic automatique&nbsp;».</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h3>🪨⚒️🏛️ Durabilité</h3>
+                            <p>Allonger la vie du matériel, lutter contre l'obsolescence programmée.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <!-- /CARD PLIABLE -->
+        </div> <!-- 👈 ICI : on FERME hero-content -->
 
+        <!-- COLONNE DROITE (comme avant) -->
         <div class="hero-aside">
             <div class="status-card">
                 <p class="status-label">Fin du support Windows 10</p>
@@ -95,6 +128,7 @@
             </div>
         </div>
     </section>
+
 
     <section id="intro" class="section section-alt">
         <div class="section-header">
@@ -134,14 +168,6 @@
             </article>
         </div>
 
-        <div class="callout">
-            <strong>Contraintes de la Nuit&nbsp;:</strong>
-            <ul>
-                <li>Application en ligne à la fin de la Nuit.</li>
-                <li>Utilisation de ressources <strong>libres de droit</strong>.</li>
-                <li>Production sous <strong>licence libre</strong>.</li>
-            </ul>
-        </div>
     </section>
 
     <section id="diagnostic" class="section">
@@ -187,6 +213,9 @@
                         <input type="checkbox" class="diag-check" data-weight="1">
                         Aucun temps de formation dédié à la sobriété numérique
                     </label>
+                </div>
+                <div>
+                    <h4>J'ai la potion magique !</h4>
                 </div>
                 <div class="diag-item">
                     <label class="gaulois-option">
