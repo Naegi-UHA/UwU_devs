@@ -1,0 +1,116 @@
+* {
+    cursor: none !important;
+}
+body {
+    margin: 0;
+    background: white;
+    color: #000;
+    font-family: 'VT323', monospace;
+    overflow: hidden;
+    text-align: center;
+    cursor: none;
+}
+
+.hidden { display: none; }
+
+.neon-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    color: #f0f;
+    text-shadow: 0 0 5px #f0f, 0 0 10px #0ff, 0 0 20px #ff0;
+    animation: flicker 1s infinite alternate;
+}
+
+#score {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    color: #000;
+    font-size: 14px;
+    z-index: 100;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.enemy, .bonus, .boss {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+
+.enemy {
+    background-image: url("../assets/images/uwu_enemy.png");
+    width: 80px;
+    height: 80px;
+}
+
+.boss {
+    background-image: url("../assets/images/uwu_boss.png");
+    width: 150px;
+    height: 150px;
+}
+
+.bonus {
+    background-image: url("../assets/images/bonus.png");
+    width: 60px;
+    height: 60px;
+}
+
+.bullet {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: red;
+    border: 2px solid white;
+    z-index: 10;
+}
+
+#lives {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 100;
+}
+
+.life-icon {
+    width: 40px;
+    height: 40px;
+    background-image: url("../assets/images/life.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#game-over h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+#game-over p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+#restart-btn {
+    font-size: 18px;
+    padding: 15px 30px;
+    background: #fff;
+    color: #0f0;
+    border: 3px solid #0f0;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Press Start 2P', cursive;
+}
