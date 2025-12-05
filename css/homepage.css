@@ -1133,21 +1133,64 @@ background: radial-gradient(
     font-weight: 600;
 }
 
-/* bouton "quoi" cliquable façon lien */
+/* Bouton "quoi" (FEUR) */
 .quoi-feur-btn {
     background: none;
     border: none;
     padding: 0;
-    margin: 0;
-    cursor: pointer;
-    color: #38bdf8;
-    text-decoration: underline dotted;
+    margin: 0 0.1rem;
     font: inherit;
+    color: #38bdf8;              /* même bleu que les liens */
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .quoi-feur-btn:hover {
-    color: #60e0ff;
+    opacity: 0.85;
 }
+
+/* ============================
+   POPUP FEUR (SANS ANIMATION)
+   ============================ */
+
+.feur-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.feur-box {
+    background: white;
+    color: black;
+    padding: 1.4rem 1.8rem;
+    border-radius: 14px;
+    width: min(340px, 90%);
+    text-align: center;
+    font-size: 1.1rem;
+    border: 2px solid black;
+}
+
+.feur-box h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.feur-box button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px;
+    border: none;
+    background: #111;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 
 /* bouton Voir / Masquer */
 .pillars-toggle-btn {
@@ -1187,3 +1230,16 @@ background: radial-gradient(
 .pillars-main-card .pillars {
     margin-top: 0;
 }
+
+/* Par défaut : fermé */
+.pillars-card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+/* Ouvert */
+.pillars-card-body.open {
+    max-height: 500px; /* assez grand pour contenir 3 cartes */
+}
+
