@@ -1,7 +1,7 @@
-// ====== CONFIG DE BASE ======
+
 const TILE_SIZE = 24;
 
-// # = mur, . = point, ' ' = vide, P = Pacman (sera retiré de la map après initialisation)
+
 const RAW_MAP = [
     "####################",
     "#........##........#",
@@ -12,7 +12,7 @@ const RAW_MAP = [
     "####################"
 ];
 
-// On convertit en tableau de caractères modifiable
+
 const map = RAW_MAP.map(row => row.split(''));
 const ROWS = map.length;
 const COLS = map[0].length;
@@ -24,7 +24,7 @@ canvas.height = ROWS * TILE_SIZE;
 
 const scoreDiv = document.getElementById('score');
 
-// ====== CHERCHE LA POSITION DE DÉPART DE PACMAN (caractère 'P') ======
+
 let pacman = {
     x: 1,
     y: 1,
@@ -41,7 +41,7 @@ for (let y = 0; y < ROWS; y++) {
         if (map[y][x] === 'P') {
             pacman.x = x;
             pacman.y = y;
-            map[y][x] = ' '; // on efface le P de la map
+            map[y][x] = ' '; 
         }
     }
 }
@@ -49,7 +49,7 @@ for (let y = 0; y < ROWS; y++) {
 let score = 0;
 let gameWon = false;
 
-// ====== DESSIN DU LABYRINTH ======
+
 function drawMap() {
     for (let y = 0; y < ROWS; y++) {
         for (let x = 0; x < COLS; x++) {
@@ -58,15 +58,15 @@ function drawMap() {
             const py = y * TILE_SIZE;
 
             if (tile === '#') {
-                // Murs
+                
                 ctx.fillStyle = "#0033cc";
                 ctx.fillRect(px, py, TILE_SIZE, TILE_SIZE);
             } else {
-                // Fond
+                
                 ctx.fillStyle = "#000000";
                 ctx.fillRect(px, py, TILE_SIZE, TILE_SIZE);
 
-                // Points
+                
                 if (tile === '.') {
                     ctx.beginPath();
                     ctx.fillStyle = "#ffcc00";
@@ -84,12 +84,11 @@ function drawMap() {
     }
 }
 
-// ====== DESSIN DE PACMAN ======
 function drawPacman() {
     const centerX = pacman.x * TILE_SIZE + TILE_SIZE / 2;
     const centerY = pacman.y * TILE_SIZE + TILE_SIZE / 2;
 
-    // Animation de la bouche (oscille entre 0 et 1)
+    
     if (pacman.mouthOpening) {
         pacman.mouthPhase += 0.08;
         if (pacman.mouthPhase >= 1) pacman.mouthOpening = false;
@@ -101,7 +100,6 @@ function drawPacman() {
     const maxMouthAngle = Math.PI / 4;
     const mouthAngle = maxMouthAngle * pacman.mouthPhase;
 
-    // Orientation en fonction de la direction
     let directionAngle = 0;
     if (pacman.dirX === 1 && pacman.dirY === 0) directionAngle = 0;           // droite
     if (pacman.dirX === -1 && pacman.dirY === 0) directionAngle = Math.PI;    // gauche
@@ -123,7 +121,6 @@ function drawPacman() {
     ctx.fill();
 }
 
-// ====== MOUVEMENT SUR LES FLÈCHES ======
 function isWall(x, y) {
     if (y < 0 || y >= ROWS || x < 0 || x >= COLS) return true;
     return map[y][x] === '#';
@@ -136,13 +133,13 @@ function tryMove(dx, dy) {
     const newY = pacman.y + dy;
 
     if (!isWall(newX, newY)) {
-        // Mouvement autorisé
+       
         pacman.x = newX;
         pacman.y = newY;
         pacman.dirX = dx;
         pacman.dirY = dy;
 
-        // Mange le point si présent
+        
         if (map[newY][newX] === '.') {
             map[newY][newX] = ' ';
             score++;
@@ -150,7 +147,7 @@ function tryMove(dx, dy) {
             if (score === totalDots) {
                 gameWon = true;
                 scoreDiv.textContent = "Score : " + score + "  |  GG, tu as tout mangé !";
-                // Optionnel : alert("Gagné !");
+                
             }
         }
     }
@@ -177,7 +174,7 @@ function updateScore() {
     scoreDiv.textContent = "Score : " + score;
 }
 
-// ====== BOUCLE DE RENDU (UNIQUEMENT POUR L'ANIM DE LA BOUCHE) ======
+
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawMap();
@@ -185,6 +182,5 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
-// Lancement
 updateScore();
 loop();
