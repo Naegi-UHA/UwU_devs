@@ -122,7 +122,7 @@ const commands = {
 ⚙️ sysinfo -> infos système
 💬 mantra  -> citation de résistance
 🕶 matrix  -> cascade numérique
-💣 shutdown -> extinction critique`;
+💣 shutdown -> extinction critique / quitter`;
     },
 
     ls: () => { 
